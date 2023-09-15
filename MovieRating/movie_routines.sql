@@ -18,30 +18,12 @@ USE `movie`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_user`
+-- Dumping events for database 'movie'
 --
 
-DROP TABLE IF EXISTS `tbl_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_user` (
-  `u_id` int NOT NULL,
-  `u_pw` varchar(255) NOT NULL,
-  `u_email` varchar(255) NOT NULL,
-  `u_birthday` date NOT NULL,
-  `u_role` varchar(255) NOT NULL,
-  PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `tbl_user`
+-- Dumping routines for database 'movie'
 --
-
-LOCK TABLES `tbl_user` WRITE;
-/*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-15 17:48:55
+-- Dump completed on 2023-09-15 17:48:56

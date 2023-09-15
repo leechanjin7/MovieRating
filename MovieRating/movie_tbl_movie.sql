@@ -32,6 +32,7 @@ CREATE TABLE `tbl_movie` (
   `m_type` varchar(255) NOT NULL,
   `m_act` varchar(255) NOT NULL,
   `m_dic` varchar(255) NOT NULL,
+  `m_release` date DEFAULT NULL,
   PRIMARY KEY (`m_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-15  9:02:35
+-- Dump completed on 2023-09-15 17:48:55
