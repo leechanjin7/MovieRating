@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\movie_rating_site\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+87274354.index
+1738144317.index
+428397153.index
+1425835150.index
+3318568874.index
+41727258.index
