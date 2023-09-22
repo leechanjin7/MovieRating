@@ -29,7 +29,7 @@ CREATE TABLE `tbl_user` (
   `u_pw` varchar(255) NOT NULL,
   `u_email` varchar(255) NOT NULL,
   `u_birthday` date NOT NULL,
-  `u_role` varchar(255) NOT NULL,
+  `u_role` int NOT NULL,
   PRIMARY KEY (`u_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-15 17:48:55
+-- Dump completed on 2023-09-22 21:21:09
