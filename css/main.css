@@ -1,0 +1,107 @@
+.orderby{
+    height: 130px;
+    display: flex; /* flex 컨테이너로 설정 */
+    align-items: flex-end; /* 수직 가운데 정렬 설정 */
+    /* border: 1px solid black; */
+    margin-bottom: 0;
+    width: 1300px;
+    justify-content: flex-end; /* 가로 오른쪽 정렬 설정 */
+}
+.orderby>.arrayO{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 10px; /* 원하는 간격으로 조절 가능 */
+    
+}
+.orderby>.arrayO> select{
+    width: 150px; /* select 요소의 너비를 조절 */
+    height: 35px;
+    font-size: 20px; /* 글자 크기를 조절*/
+    text-align: center;
+}
+.main{
+    height: 1300px;
+}
+.showMovie ul {
+    display: flex; /* li 요소들을 가로로 배열하기 위해 flex 컨테이너로 설정 */
+    list-style-type: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+    margin: 0;
+    /* border: 2px solid green; */
+    height: 500px;
+    align-items: center;
+  }
+  
+  .showMovie li {
+    flex: 1; /* 각 li 요소에 동일한 비율의 공간을 할당합니다. */
+    /* margin-right: 10px; li 요소 사이의 간격을 조절할 수 있습니다. */
+    /* border: 1px solid red; */
+    padding: 0px 8px;
+    
+}
+
+.showimg{
+    /* border: 5px solid pink;
+    width: 180px; */
+}
+.showTitle{
+    color: rgb(31, 31, 31);
+    font-size: 15px;
+    /* font-weight: 400; */
+    letter-spacing: -0.5px;
+    height: 30px;
+    line-height: 30px;
+}
+.showRating{
+    color: #74747b;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 15px;
+}
+
+
+/* 페이징 */
+.paging{
+    display: flex;
+    height: 50px;
+    /* border: 1px solid black; */
+    justify-content: center;
+    gap: 10px; 
+    padding-top: 10px;
+}
+.paging>.pagebtn :hover{
+    color: orange;
+}
+
+/* 영화 간략소개 */
+.showMovie a{
+    display: block;
+    overflow: hidden;
+    position: relative;/* absolute의 기본기준은 body로 처리 - 현재 요소로 기준변경 */
+}
+
+.showMovie figure{
+    width: 100%; height: 100%;
+    position: relative;
+}
+.showMovie figcaption{
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0; left: 0;
+    color: #fff; 
+    text-align: center;
+    line-height: 30px;
+    padding-top: 50px;
+    opacity: 0; /* 처음엔 안보이고 */
+    transition: 0.4s;
+}
+.showMovie a :hover figcaption,
+.showMovie a:focus figcaption{
+    opacity: 1;
+}
+.desc{
+    margin-bottom: 20px;
+}

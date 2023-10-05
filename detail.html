@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <style>
+    @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+    .rate {
+        display: inline-block;
+        border: 0;
+        margin-right: 15px;
+    }
+
+    .rate>input {
+        display: none;
+    }
+
+    .rate>label {
+        float: right;
+        color: #ddd
+    }
+
+    .rate>label:before {
+        display: inline-block;
+        font-size: 1rem;
+        padding: .3rem .2rem;
+        margin: 0;
+        cursor: pointer;
+        font-family: FontAwesome;
+        content: "\f005 ";
+    }
+
+    .rate .half:before {
+        content: "\f089 ";
+        position: absolute;
+        padding-right: 0;
+    }
+
+    .rate input:checked~label,
+    .rate label:hover,
+    .rate label:hover~label {
+        color: #f73c32 !important;
+    }
+
+    .rate input:checked+.rate label:hover,
+    .rate input input:checked~label:hover,
+    .rate input:checked~.rate label:hover~label,
+    .rate label:hover~input:checked~label {
+        color: #f73c32 !important;
+    }
+</style> -->
+
+<body>
+
+    <header>
+        <!-- 헤더 영역: 로고, 네비게이션 메뉴 등 -->
+        <nav>
+
+        </nav>
+    </header>
+
+
+    <main>
+        <!-- 주요 콘텐츠 영역 -->
+
+        <article>
+            <!-- 개별 글/콘텐츠 -->
+
+            <section>
+                <div>
+                    <div name="top-image">
+                        <div></div>
+                        <div>
+                            <div>
+                                <h1>제목</h1>
+                                <div>제목 디테일</div>
+                                <div>개봉일 / 장르</div>
+                                <div>러닝타임</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div name="Start-image">⭐</div>
+                        <div name="Movie-avg-rate">4.0</div>
+                    </div>
+                    <div>
+                        <section>
+                            <div name="Poster-image"></div>
+                            <div name="intro">
+                                <section>
+                                    <div>
+                                        <h3>평가하기</h3>
+                                        <div>리뷰작성자 "(리뷰total count)" 명</div>
+                                        <fieldset class="rate">
+                                            <input type="radio" id="rating10" name="rating" value="10"><label
+                                                for="rating10" title="5점"></label>
+                                            <input type="radio" id="rating9" name="rating" value="9"><label class="half"
+                                                for="rating9" title="4.5점"></label>
+                                            <input type="radio" id="rating8" name="rating" value="8"><label
+                                                for="rating8" title="4점"></label>
+                                            <input type="radio" id="rating7" name="rating" value="7"><label class="half"
+                                                for="rating7" title="3.5점"></label>
+                                            <input type="radio" id="rating6" name="rating" value="6"><label
+                                                for="rating6" title="3점"></label>
+                                            <input type="radio" id="rating5" name="rating" value="5"><label class="half"
+                                                for="rating5" title="2.5점"></label>
+                                            <input type="radio" id="rating4" name="rating" value="4"><label
+                                                for="rating4" title="2점"></label>
+                                            <input type="radio" id="rating3" name="rating" value="3"><label class="half"
+                                                for="rating3" title="1.5점"></label>
+                                            <input type="radio" id="rating2" name="rating" value="2"><label
+                                                for="rating2" title="1점"></label>
+                                            <input type="radio" id="rating1" name="rating" value="1"><label class="half"
+                                                for="rating1" title="0.5점"></label>
+
+                                        </fieldset>
+                                        <button>리뷰 쓰기</button>
+                                        <button>리뷰 보기</button>
+                                    </div>
+                                </section>
+                                <section>
+                                    <div>
+                                        <textarea name="" id="" cols="30" rows="10">영화 소개글(m_info)</textarea>
+                                    </div>
+                                </section>
+                                <section>
+                                    <input type="text" display="hidden">
+                                    <input type="submit">
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div name="directer & acter">
+                                <h3>출연/제작</h3>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <div name="picture"></div>
+                                                <div>
+                                                    <div>
+                                                        <div>감독</div>
+                                                        <div>이름(m.dir)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div name="picture"></div>
+                                                <div>
+                                                    <div>
+                                                        <div>배우</div>
+                                                        <div>이름(m.act)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div name="picture"></div>
+                                                <div>
+                                                    <div>
+                                                        <div>배우</div>
+                                                        <div>이름(m.act)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div name="picture"></div>
+                                                <div>
+                                                    <div>
+                                                        <div>배우</div>
+                                                        <div>이름(m.act)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div>
+                                <h2>코멘트</h2>
+                                <div>리뷰total(Count.review)</div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div>
+                                                <div>UserName</div>
+                                                <div>
+                                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" alt="">
+                                                    <span>4.5(m.rate)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <textarea name="" id="" cols="30" rows="10">review context</textarea>
+                                        </div>
+                                        <div>
+                                            <div><button>Like</button><span>Like Count</span></div>
+                                            <div>좋아요</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+
+            </section>
+
+
+
+        </article>
+
+    </main>
+
+    <footer>
+        <!-- 푸터 영역: 저작권 정보, 연락처 등 -->
+    </footer>
+
+</body>
+
+</html>
