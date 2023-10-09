@@ -54,9 +54,6 @@ section {
   justify-content: center;
   gap: 10px;
 }
-section{
-  height: 1100px;
-}
 .polBox{
 display: flex;
 justify-content: center;

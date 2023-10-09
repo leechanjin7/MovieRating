@@ -17,5 +17,10 @@ public class MovieController {
         return "/main";
     }
 
+    @GetMapping("detail")
+    public void GETDetail(){
+
+    }
+
 
 }
