@@ -1,7 +1,7 @@
 package com.example.demo.mapper;
 
 
-import com.example.demo.domain.vo.MovieVO;
+import com.example.demo.domain.dto.MovieDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.List;
 public interface MovieMapper {
 	
 	//영화 검색(단건)
-	public MovieVO select(int movieId);
+	public MovieDTO select(int movieId);
 
 	//영화 검색(전체 리스트)
-	public List<MovieVO> selectAll();
+	public List<MovieDTO> selectAll();
 
 	//영화 추가
-	public void insert(MovieVO movieVO);
+	public void insert(MovieDTO movieDTO);
 	
 	//영화 수정
-	public void update(MovieVO movieVO);
+	public void update(MovieDTO movieDTO);
 	
 	//영화 삭제
 	public void delete(int movieId);

@@ -2,7 +2,7 @@ package com.example.demo.mapper;
 
 
 
-import com.example.demo.domain.vo.MovieVO;
+import com.example.demo.domain.dto.MovieDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class MovieMapperTests {
 	//조회테스트
 	@Test
 	public void selectTest() {
-		MovieVO movie = movieMapper.select(2);
+		MovieDTO movie = movieMapper.select(2);
 		System.out.println("조회 정보 : " + movie);
 	}
 	
@@ -26,7 +26,7 @@ public class MovieMapperTests {
 	@Test
 	public void insertTest() {
 		
-		MovieVO movie = new MovieVO();
+		MovieDTO movie = new MovieDTO();
 		
 		movie.setMovieName("테스트네임2");
 		movie.setMovieTime("테스트시간2");

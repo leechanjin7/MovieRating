@@ -1,11 +1,11 @@
-package com.example.demo.domain.vo;
+package com.example.demo.domain.dto;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class MovieVO {
+public class MovieDTO {
 	
 	private int movieId;
 	private String movieName;

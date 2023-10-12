@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.MovieMapper">
 
     <!-- 영화단건조회  -->
-    <select id="select" resultType="com.example.demo.domain.vo.MovieVO">
+    <select id="select" resultType="com.example.demo.domain.dto.MovieDTO">
         SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE
         FROM TBL_MOVIE
         WHERE MOVIEID = #{movieId}
