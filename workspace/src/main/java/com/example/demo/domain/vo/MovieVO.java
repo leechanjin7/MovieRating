@@ -15,6 +15,7 @@ public class MovieVO {
 	private String movieAct;
 	private String movieDic;
 	private String movieRelease;
+	private int movieRating;
 
 	
 
