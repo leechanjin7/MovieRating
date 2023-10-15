@@ -6,7 +6,7 @@
 
     <!-- 영화단건조회  -->
     <select id="select" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
         FROM TBL_MOVIE
         WHERE MOVIEID = #{movieId}
     </select>
@@ -14,9 +14,36 @@
     <!-- 영화등록  -->
     <insert id="insert">
         INSERT INTO tbl_movie
-        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE)
+        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING)
         VALUES(#{movieId}, #{movieName}, #{movieTime}, #{movieInfo}, #{movieType}, #{movieDic}, #{movieAct},
         #{movieRelease});
     </insert>
 
+    <!-- 영화전체목록조회 -->
+    <select id="selectAll" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        FROM TBL_MOVIE
+        ORDER BY MOVIEID
+    </select>
+
+    <!-- 영화목록 페이징처리 -->
+    <select id="moviePaging" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        FROM TBL_MOVIE
+        ORDER BY MOVIEID
+        LIMIT #{skip}, #{amount}
+    </select>
+
+    <!-- 영화 총 갯수 -->
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(*) FROM TBL_MOVIE
+    </select>
+
+    <!-- 영화목록 평점순 조회 -->
+    <select id="movieRatingSelect" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        FROM TBL_MOVIE
+        ORDER BY MOVIERATING DESC
+        LIMIT #{skip}, #{amount}
+    </select>
 </mapper>

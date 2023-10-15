@@ -2,7 +2,9 @@ package com.example.demo.mapper;
 
 
 import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.paging.Criteria;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,7 +15,16 @@ public interface MovieMapper {
 	public MovieDTO select(int movieId);
 
 	//영화 검색(전체 리스트)
-	public List<MovieDTO> selectAll();
+	public List<MovieDTO> selectAll(Criteria criteria);
+
+	//영화 목록(페이징처리)
+	public List<MovieDTO> moviePaging(Criteria criteria);
+
+	//영화총갯수
+	public int getTotal();
+
+	//영화목록 평점순 조회
+	public List<MovieDTO> movieRatingSelect(Criteria criteria);
 
 	//영화 추가
 	public void insert(MovieDTO movieDTO);
