@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MovieMapper">
+
+    <!-- 영화단건조회  -->
+    <select id="select" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE
+        FROM TBL_MOVIE
+        WHERE MOVIEID = #{movieId}
+    </select>
+
+    <!-- 영화등록  -->
+    <insert id="insert">
+        INSERT INTO tbl_movie
+        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE)
+        VALUES(#{movieId}, #{movieName}, #{movieTime}, #{movieInfo}, #{movieType}, #{movieDic}, #{movieAct},
+        #{movieRelease});
+    </insert>
+
+    <!-- 삭제 -->
+    <delete id = "delete">
+        delete from tbl where id = #{movieId}
+
+    </delete>
+
+</mapper>
