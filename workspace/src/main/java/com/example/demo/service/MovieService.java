@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.dto.Search;
 import com.example.demo.domain.paging.Criteria;
 import com.example.demo.mapper.MovieMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +28,18 @@ public class MovieService {
     }
 
     //영화 총 갯수
-    public int getTotal(){
-       return movieMapper.getTotal();
+    public int getTotal(Search search){
+       return movieMapper.searchCountAll(search);
+    }
+
+    //영화목록조회(검색추가)
+    public List<MovieDTO> getList(Criteria criteria, Search search){
+        return movieMapper.getList(criteria, search);
+    }
+
+    //목록페이징(검색추가)
+    public List<MovieDTO> getListPaging(Criteria criteria, Search search){
+        return movieMapper.getListPaging(criteria, search);
     }
 
 }

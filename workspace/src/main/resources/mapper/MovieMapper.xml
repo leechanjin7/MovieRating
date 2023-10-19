@@ -46,4 +46,41 @@
         ORDER BY MOVIERATING DESC
         LIMIT #{skip}, #{amount}
     </select>
+
+    <!-- 영화 목록(검색기능추가)  -->
+    <select id="getList" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT * FROM TBL_MOVIE
+        <include refid="search"/>
+        ORDER BY MOVIERATING ASC
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <!-- 영화 카테고리 검색 -->
+    <sql id="search">
+        <if test="search.keyword != null">
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 't'.toString()">
+                                    MOVIENAME LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'w'.toString()">
+                                    MOVIETYPE LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
+    <select id="searchCountAll" resultType="int">
+        SELECT COUNT(MOVIEID) FROM TBL_MOVIE
+        <include refid="search"/>
+    </select>
+
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.example.demo.cotroller;
 
 import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.dto.Search;
 import com.example.demo.domain.paging.Criteria;
 import com.example.demo.domain.paging.PageMakerDTO;
 import com.example.demo.service.MovieService;
@@ -34,21 +35,22 @@ public class MovieController {
 
     }
 
-//    영화목록(페이징 적용)
+    //영화검색 + 페이징
     @GetMapping("/main")
-    public String list(Model model, @RequestParam(defaultValue = "1") int page) {
+    public void GETMovieList(Search search, Model model, @RequestParam(defaultValue = "1") int page ){
         Criteria criteria = new Criteria(page, 10); // 한 페이지당 10개의 아이템을 표시
+//        System.out.println("GET movielist " + search);
+        List<MovieDTO> list = movieService.getList(criteria, search);
+        model.addAttribute("list", list);
 
-        List<MovieDTO> list = movieService.moviePaging(criteria);
-        int total = movieService.getTotal();
-
+        int total = movieService.getTotal(search);
+//        System.out.println("Count : " + total);
         PageMakerDTO pageMaker = new PageMakerDTO(criteria, total);
 
-        model.addAttribute("list", list);
+        int totalMovieCount = movieService.getTotal(search);
+        model.addAttribute("totalMovieCount", totalMovieCount);
         model.addAttribute("pageMaker", pageMaker);
         model.addAttribute("criteria", criteria);
-
-        return "main";
     }
 
 

@@ -43,14 +43,14 @@ public class MovieMapperTests {
 		movieMapper.insert(movie);
 	}
 
-	@Test
-	public void selectAllTest(){
-
-		Criteria criteria = new Criteria();
-		List<MovieDTO> list = movieMapper.selectAll(criteria);
-
-		log.info(list.toString());
-	}
+//	@Test
+//	public void selectAllTest(){
+//
+//		Criteria criteria = new Criteria();
+//		List<MovieDTO> list = movieMapper.selectAll(criteria);
+//
+//		log.info(list.toString());
+//	}
 
 //	//영화페이징테스트
 //	@Test
