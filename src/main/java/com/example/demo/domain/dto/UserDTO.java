@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 public class UserDTO {
 	
 	//회원id
-	private int userId;
+	private String userId;
+
+	//회원이름
+	private String userName;
 	//회원 pw
 	private String userPw;
 	//회원 email

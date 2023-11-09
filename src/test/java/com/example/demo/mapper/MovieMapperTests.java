@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 
 
 import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.paging.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,11 @@ public class MovieMapperTests {
 	}
 
 	@Test
-	public void selectAll(){
+	public void selectAll(Criteria criteria){
 
 
-		List<MovieDTO> list = movieMapper.selectAll();
+		List<MovieDTO> list = movieMapper.selectAll(criteria);
 		System.out.println("결과 : " + list);
-
 
 //		movieMapper.selectAll().stream().map(MovieVO::toString).forEach(log::info);
 	}

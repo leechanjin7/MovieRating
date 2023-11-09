@@ -57,18 +57,16 @@
           </nav>
 
           <div class="right_icon">
-              <div>
-                  <input
-                          class="search"
-                          type="text"
-                          placeholder="보고싶은 영화를 검색해보세요."
-                  />
-                  <img
-                          class="search_icon"
-                          src="/image/search_icon.png"
-                          alt="검색찾기 아이콘"
-                  />
-              </div>
+              <form name="searchForm" th:action="@{/main}" method="get" id="searchForm">
+                <span class="bunch">
+                    <select name="type" id="sFld">
+                      <option value="tw" th:selected="${search.type == 'tw'}">전체</option>
+                      <option value="t" th:selected="${search.type == 't'}">제목</option>
+                      <option value="w" th:selected="${search.type == 'w'}">장르</option>
+                      <input type="text" name="keyword" id="sStr" th:value="${search.keyword}" placeholder="보고싶은 영화를 검색해보세요">
+                    </select>
+                </span>
+              </form>
 
               <a href="#" class="login_button">로그인</a>
               <a href="/member/join" class="join_button">회원가입</a>
@@ -80,6 +78,7 @@
       <div class="boxalign">
           <div class="orderby">
               <div class="arrayO">
+                  <div class="total_movie_cnt" th:text="'총 영화수 : '+${totalMovieCount}+'개'">영화수</div>
                   <select>
                       <option value="recomend">추천순</option>
                       <option value="alphabetical">가나다순</option>
@@ -88,310 +87,54 @@
                   </select>
               </div>
           </div>
-          <div class="showMovie">
+          <div class="showMovie" >
               <ul>
-                  <li>
-                      <a title="에브리씽 에브리웨어 올 앳 원스" href="">
+                  <li th:each="list : ${list}">
+                      <a  th:href="'/movieDetail/' + ${list.movieId}">
                           <div class="showimg">
                               <figure>
-                                  <img class="showPoster" src="image/에에올.jpg" style="width:100%;">
+                                  <img class="showPoster" src="/image/바람.jpg" style="width:100%;">
                                   <figcaption>
                                       <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2022.10.12</span>
+                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;" >개봉일</div>
+                                          <span style="font-size: 18px;" th:text="${list.movieRelease}">2022.10.12</span>
                                       </div>
                                       <div class="desc">
                                           <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">액션,모험</span>
+                                          <span style="font-size: 18px;" th:text="${list.movieType}"></span>
                                       </div>
                                       <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">댄 콴, 다니엘 쉐이너트  </span>
+                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;" >감독</div>
+                                          <span style="font-size: 18px;" th:text="${list.movieDic}">댄 콴, 다니엘 쉐이너트  </span>
                                       </div>
                                   </figcaption>
                               </figure>
                           </div>
-                          <div class="showTitle">에브리씽 에브리웨어 올 앳 원스</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="화양연화 리마스터링" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/화양연화.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2000.10.21</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">드라마,로맨스</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">왕가위</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">화양연화 리마스터링</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="캐롤" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/캐롤.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2016.02.04</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">모험,로맨스</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">토드 헤인즈</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">캐롤</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="셰이프 오브 워터: 사랑의 모양" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/셰이프오브워터.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2018.02.22</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">모험,스릴러,판타지</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">기예르모 델 토로</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">셰이프 오브 워터: 사랑의 모양</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="매드맥스: 분노의 도로" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/매드맥스.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2015.05.14</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">액션,모험,SF</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">조지 밀러</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">매드맥스: 분노의 도로</div>
-                          <div class="showRating">★${평균별점수}</div>
+                          <div class="showTitle" th:text="${list.movieName}">에브리씽 에브리웨어 올 앳 원스</div>
+                          <div class="showRating" th:text="'★'+${list.movieRating}">★${평균별점수}</div>
                       </a>
                   </li>
               </ul>
-              <ul>
-                  <li>
-                      <a title="이터널 선샤인" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/이터널선샤인.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2005.11.10</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">드라마,로맨스</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">미셸 공드리</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">이터널 선샤인</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="친절한 금자씨" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/친절한금자씨.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2005.07.29</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">드라마,스릴러,범죄</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">박찬욱</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">친절한 금자씨</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="큐어" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/큐어.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">1997.12.27</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">스릴러,미스터리</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">구로사와 기요시</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">큐어</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="우연과 상상" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/우연과상상.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2022.05.04</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">드라마,로맨스</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">하마구치 류스케</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">우연과 상상</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a title="미스트" href="">
-                          <div class="showimg">
-                              <figure>
-                                  <img class="showPoster" src="image/미스트.jpg" style="width:100%;">
-                                  <figcaption>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                          <span style="font-size: 18px;">2008.01.10</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                          <span style="font-size: 18px;">공포,SF,스릴러</span>
-                                      </div>
-                                      <div class="desc">
-                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                          <span style="font-size: 18px;">프랭크 다라본트</span>
-                                      </div>
-                                  </figcaption>
-                              </figure>
-                          </div>
-                          <div class="showTitle">미스트</div>
-                          <div class="showRating">★${평균별점수}</div>
-                      </a>
-                  </li>
-              </ul>
-
-          </div>
-
-          <div class="paging">
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-1-circle" viewBox="0 0 16 16">
-                      <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-2-circle" viewBox="0 0 16 16">
-                      <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-3-circle" viewBox="0 0 16 16">
-                      <path d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z"/>
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-4-circle" viewBox="0 0 16 16">
-                      <path d="M7.519 5.057c.22-.352.439-.703.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218Z"/>
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-5-circle" viewBox="0 0 16 16">
-                      <path d="M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8Zm15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0Zm-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-6-circle" viewBox="0 0 16 16">
-                      <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582Z"/>
-                  </svg>
-              </a>
-              <a href="" class="pagebtn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                  </svg>
-              </a>
           </div>
       </div>
   </section>
+          <div class="paging">
+              <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${criteria.amount})}"
+                 class="pagebtn"> <
+              </a>
+
+              <th:block th:each="pageNum : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
+                  <a th:href="@{/main(page=${pageNum}, amount=${criteria.amount})}" class="pagebtn">
+                      <span th:text="${pageNum}"></span>
+                  </a>
+              </th:block>
+
+              <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${criteria.amount})}"
+                 class="pagebtn">
+                  >
+              </a>
+          </div>
+
     <footer>
       <div class="boxalign">
         <div class="footer_nav">

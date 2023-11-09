@@ -1,19 +1,50 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.dto.Search;
+import com.example.demo.domain.paging.Criteria;
 import com.example.demo.mapper.MovieMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class MovieService {
+    @Autowired
+    private final MovieMapper mapper;
 
- @Autowired
- MovieMapper mapper;
+    //전체영화 조회
+    public List<MovieDTO> selectAll(Criteria criteria){
 
-    public List<MovieDTO> getAllMovie() {
-        return mapper.selectAll();
+        return mapper.selectAll(criteria);
     }
+
+    //영화 목록(페이징처리)
+    public List<MovieDTO> moviePaging(Criteria criteria){
+        return mapper.moviePaging(criteria);
+    }
+
+    //영화 총 갯수
+    public int getTotal(Search search){
+            return mapper.searchCountAll(search);
+    }
+
+    //영화목록조회(검색추가)
+    public List<MovieDTO> getList(Criteria criteria, Search search){
+        return mapper.getList(criteria, search);
+    }
+
+    //목록페이징(검색추가)
+    public List<MovieDTO> getListPaging(Criteria criteria, Search search){
+        return mapper.getListPaging(criteria, search);
+    }
+
+
+
+
 }

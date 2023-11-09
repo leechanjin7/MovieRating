@@ -1,26 +1,48 @@
 package com.example.demo.cotroller;
 
+import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.dto.Search;
+import com.example.demo.domain.paging.Criteria;
+import com.example.demo.domain.paging.PageMakerDTO;
+import com.example.demo.service.MovieService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 public class MovieController {
 
+    private final MovieService service;
+
+
+    //    영화목록(페이징 적용)
     @GetMapping("/main")
-    public String GETMainPage() {
+    public void GETMovieList(Search search, Model model, @RequestParam(defaultValue = "1") int page ){
+        Criteria criteria = new Criteria(page, 10); /*페이지당 몇개의 포스터가 보여질 건지*/
+        List<MovieDTO> list = service.getList(criteria, search);
+        model.addAttribute("list", list);
+        int total = service.getTotal(search);
+        PageMakerDTO pageMaker = new PageMakerDTO(criteria, total);
 
-        log.info("메인 페이지 진입");
+        int totalMovieCount = service.getTotal(search);
+        model.addAttribute("totalMovieCount", totalMovieCount);
+        model.addAttribute("pageMaker", pageMaker);
+        model.addAttribute("criteria", criteria);
 
-        return "/main";
-    }
-
-    @GetMapping("detail")
-    public void GETDetail(){
 
     }
 
 
 }
+
+
+
+

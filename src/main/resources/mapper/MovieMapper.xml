@@ -3,26 +3,89 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.MovieMapper">
-
+    <!--영화갯수 반환-->
+    <select id ="movieCount" resultType="int">
+        SELECT COUNT(MOVIEID) AS CNT FROM TBL_MOVIE
+    </select>
     <!-- 영화단건조회  -->
     <select id="select" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
         FROM TBL_MOVIE
         WHERE MOVIEID = #{movieId}
-    </select>
-
-
-    <select id="selectAll" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE ,MOVIERATING
-        FROM TBL_MOVIE
     </select>
 
     <!-- 영화등록  -->
     <insert id="insert">
         INSERT INTO tbl_movie
-        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE)
+        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING)
         VALUES(#{movieId}, #{movieName}, #{movieTime}, #{movieInfo}, #{movieType}, #{movieDic}, #{movieAct},
-        #{movieRelease});
+        #{movieRelease},#{MOVIERATING});
     </insert>
+
+    <!-- 영화전체목록조회 -->
+    <select id="selectAll" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        FROM TBL_MOVIE
+        ORDER BY MOVIEID
+    </select>
+
+    <!-- 영화목록 페이징처리 -->
+    <select id="moviePaging" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        FROM TBL_MOVIE
+        ORDER BY MOVIEID
+        LIMIT #{skip}, #{amount}
+    </select>
+
+    <sql id="search">
+        <if test="search.keyword != null">
+            <!--검색키워드가 발생 되었을 때 where절 실행-->
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 't'.toString()">
+                                    MOVIENAME LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'w'.toString()">
+                                    MOVIETYPE LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
+
+    <select id="getList" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT * FROM TBL_MOVIE
+        <include refid="search"/>
+        ORDER BY MOVIERATING ASC
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <!-- 영화 총 갯수 -->
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(*) FROM TBL_MOVIE
+    </select>
+    <select id="searchCountAll" resultType="int">
+        SELECT COUNT(MOVIEID) FROM TBL_MOVIE
+        <include refid="search"/>
+    </select>
+
+
+    <!-- 영화목록 평점순 조회 -->
+    <select id="movieRatingSelect" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        FROM TBL_MOVIE
+        ORDER BY MOVIERATING DESC
+        LIMIT #{skip}, #{amount}
+    </select>
+
+
+
 
 </mapper>
