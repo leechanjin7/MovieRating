@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
-    <link rel="stylesheet" href="/css/main.css"/>
-    <link rel="stylesheet" href="/css/login.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/login.css" />
     <title>Document</title>
-</head>
-<body>
-<div class="l_options">
-    <div class="l_settions">
-        <div class="l_settingcloseBtn">
-            <div>로그인</div>
-            <button class="close">&times;</button>
-        </div>
-        <div class="l_settingtitle">
-            <form action="" method="POST">
+  </head>
+  <body>
+  <div class="l_options">
+      <div class="l_settions">
+          <div class="l_settingcloseBtn">
+              <div>로그인</div>
+              <button class="close">&times;</button>
+          </div>
+          <div class="l_settingtitle">
+              <form action="" method="POST">
 
-                <input type="text" name="username" placeholder="아이디를 입력하세요." required>
+                  <input type="text" name="username" placeholder="아이디를 입력하세요." required>
 
-                <input type="password" name="password" placeholder="비밀번호를 입력하세요." required>
+                  <input type="password" name="password" placeholder="비밀번호를 입력하세요."  required>
 
-                <button class="loginBtn" type="submit">로그인</button>
-            </form>
-            <a href="/member/join" class="regiBtn">회원가입</a>
-            <a href="#" class="forget">아이디•비밀번호를 잊으셨나요?</a>
-        </div>
-    </div>
-</div>
-<header>
-    <div class="boxalign">
-        <h1 class="logo">
-            <a href="#"><img src="/image/Logo.png" alt="상위로고"/></a>
-        </h1>
+                  <button class="loginBtn" type="submit">로그인</button>
+              </form>
+              <a href="/member/join" class="regiBtn">회원가입</a>
+              <a href="#" class="forget">아이디•비밀번호를 잊으셨나요?</a>
+          </div>
+      </div>
+  </div>
+  <header>
+      <div class="boxalign">
+          <h1 class="logo">
+              <a th:href="@{/main}"><img src="/image/Logo.png" alt="상위로고" /></a>
+          </h1>
 
-        <nav>
-            <ul>
-                <li><a href="#">영화</a></li>
-                <li class="genre_button">
-                    <a href="#">장르</a>
-                </li>
-                <li><a href="#">찜한목록</a></li>
-                <div class="genre_pop">
-                    <ul>
-                        <li><a href="#">전체</a></li>
-                        <li><a href="#">공포</a></li>
-                        <li><a href="#">스릴러</a></li>
-                        <li><a href="#">액션</a></li>
-                        <li><a href="#">기타</a></li>
-                        <li><a href="#">로맨스</a></li>
-                    </ul>
-                </div>
-            </ul>
-        </nav>
+          <nav>
+              <ul>
+                  <li><a href="#">영화</a></li>
+                  <li class="genre_button">
+                      <a href="#">장르</a>
+                  </li>
+                  <li><a href="#">찜한목록</a></li>
+                  <div class="genre_pop">
+                      <ul>
+                          <li><a href="#">전체</a></li>
+                          <li><a href="#">공포</a></li>
+                          <li><a href="#">스릴러</a></li>
+                          <li><a href="#">액션</a></li>
+                          <li><a href="#">기타</a></li>
+                          <li><a href="#">로맨스</a></li>
+                      </ul>
+                  </div>
+              </ul>
+          </nav>
 
-        <div class="right_icon">
-            <form name="searchForm" th:action="@{/main}" method="get">
+          <div class="right_icon">
+              <form name="searchForm" th:action="@{/main}" method="get" id="searchForm">
                 <span class="bunch">
                     <select name="type" id="sFld">
                       <option value="tw" th:selected="${search.type == 'tw'}">전체</option>
@@ -66,112 +66,105 @@
                       <input type="text" name="keyword" id="sStr" th:value="${search.keyword}" placeholder="보고싶은 영화를 검색해보세요">
                     </select>
                 </span>
-                <img class="search_icon" src="/image/search_icon.png" alt="검색찾기 아이콘"/>
-            </form>
+              </form>
 
-            <a href="#" class="login_button">로그인</a>
-            <a href="/member/join" class="join_button">회원가입</a>
-        </div>
-    </div>
-</header>
+              <a href="#" class="login_button">로그인</a>
+              <a href="/member/join" class="join_button">회원가입</a>
+          </div>
+      </div>
+  </header>
 
-<section class="main">
-    <div class="boxalign">
-        <div class="orderby">
-            <div class="arrayO">
-                <select>
-                    <option value="recomend">추천순</option>
-                    <option value="alphabetical">가나다순</option>
-                    <option value="avgscore">평균별점순</option>
-                    <option value="newworks">신작순</option>
-                </select>
-            </div>
-        </div>
-        <div class="showMovie">
-            <ul class="movie-list">
-                <li th:each="movie : ${list}">
-                    <a title="에브리씽 에브리웨어 올 앳 원스" href="">
-                        <div class="showimg">
-                            <figure>
-                                <img class="showPoster" src="image/에에올.jpg" style="width:100%;">
-                                <figcaption>
-                                    <div class="desc">
-                                        <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">개봉일</div>
-                                        <span style="font-size: 18px;" th:text="${movie.movieRelease}">2022.10.12</span>
-                                    </div>
-                                    <div class="desc">
-                                        <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
-                                        <span style="font-size: 18px;" th:text="${movie.movieType}">액션,모험</span>
-                                    </div>
-                                    <div class="desc">
-                                        <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">감독</div>
-                                        <span style="font-size: 18px;"
-                                              th:text="${movie.movieDic}">댄 콴, 다니엘 쉐이너트  </span>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <div class="showTitle" th:text="${movie.movieName}">에브리씽 에브리웨어 올 앳 원스</div>
-                        <div class="showRating">★${평균별점수}</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-<div class="paging">
-    <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${criteria.amount})}"
-       class="pagebtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-             class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                  d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-        </svg>
-    </a>
-    <th:block th:each="pageNum : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
-        <a th:href="@{/main(page=${pageNum}, amount=${criteria.amount})}" class="pagebtn">
-            <span th:text="${pageNum}"></span>
-        </a>
-    </th:block>
-    <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${criteria.amount})}"
-       class="pagebtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-             class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                  d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-        </svg>
-    </a>
-</div>
-<footer>
-    <div class="boxalign">
+  <section class="main">
+      <div class="boxalign">
+          <div class="orderby">
+              <div class="arrayO">
+                  <div class="total_movie_cnt" th:text="'총 영화수 : '+${totalMovieCount}+'개'">영화수</div>
+                  <select>
+                      <option value="recomend">추천순</option>
+                      <option value="alphabetical">가나다순</option>
+                      <option value="avgscore">평균별점순</option>
+                      <option value="newworks">신작순</option>
+                  </select>
+              </div>
+          </div>
+          <div class="showMovie" >
+              <ul>
+                  <li th:each="list : ${list}">
+                      <a  th:href="'/movieDetail/' + ${list.movieId}">
+                          <div class="showimg">
+                              <figure>
+                                  <img class="showPoster" src="/image/바람.jpg" style="width:100%;">
+                                  <figcaption>
+                                      <div class="desc">
+                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;" >개봉일</div>
+                                          <span style="font-size: 18px;" th:text="${list.movieRelease}">2022.10.12</span>
+                                      </div>
+                                      <div class="desc">
+                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;">장르</div>
+                                          <span style="font-size: 18px;" th:text="${list.movieType}"></span>
+                                      </div>
+                                      <div class="desc">
+                                          <div style="color: #f2b90a; font-weight: bold; font-size: 15px;" >감독</div>
+                                          <span style="font-size: 18px;" th:text="${list.movieDic}">댄 콴, 다니엘 쉐이너트  </span>
+                                      </div>
+                                  </figcaption>
+                              </figure>
+                          </div>
+                          <div class="showTitle" th:text="${list.movieName}">에브리씽 에브리웨어 올 앳 원스</div>
+                          <div class="showRating" th:text="'★'+${list.movieRating}">★${평균별점수}</div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </section>
+          <div class="paging">
+              <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+                 class="pagebtn"> <
+              </a>
+
+              <th:block th:each="pageNum : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
+                  <a th:href="@{/main(page=${pageNum}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}" class="pagebtn" >
+                      <span th:text="${pageNum}"></span>
+                  </a>
+              </th:block>
+
+              <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+                 class="pagebtn">
+                  >
+              </a>
+          </div>
+
+    <footer>
+      <div class="boxalign">
         <div class="footer_nav">
-            <ul>
-                <li><a href="javascript:;">회사소개</a></li>
-                <li><a href="javascript:;">고객센터</a></li>
-                <li><a href="javascript:;">개인정보취급방침</a></li>
-                <li><a href="javascript:;">이용약관</a></li>
-                <li><a href="javascript:;">광고 및 제휴</a></li>
-                <li><a href="javascript:;">사이트맵</a></li>
-            </ul>
+          <ul>
+            <li><a href="javascript:;">회사소개</a></li>
+            <li><a href="javascript:;">고객센터</a></li>
+            <li><a href="javascript:;">개인정보취급방침</a></li>
+            <li><a href="javascript:;">이용약관</a></li>
+            <li><a href="javascript:;">광고 및 제휴</a></li>
+            <li><a href="javascript:;">사이트맵</a></li>
+          </ul>
         </div>
 
         <div class="footer_logo">
-            <a href="javascript:;">
-                <img src="/image/footer_logo.png" alt="하단로고"/>
-            </a>
+          <a href="javascript:;">
+            <img src="/image/footer_logo.png" alt="하단로고" />
+          </a>
         </div>
 
         <div class="copyright">
-            <div>
-                사업자등록번호 : 105-512-478235 | 통신판매업번호 :
-                제2015-서울영등포-4527호
-                <p>(c) MOVIE Co., LTD | 053-888-7754</p>
-            </div>
+          <div>
+            사업자등록번호 : 105-512-478235 | 통신판매업번호 :
+            제2015-서울영등포-4527호
+            <p>(c) MOVIE Co., LTD | 053-888-7754</p>
+          </div>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<script src="/js/index.js"></script>
-<script src="/js/login.js"></script>
-</body>
+    <script src="/js/index.js"></script>
+    <script src="/js/login.js"></script>
+  </body>
 </html>
