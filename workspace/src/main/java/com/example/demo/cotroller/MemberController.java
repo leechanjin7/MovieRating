@@ -17,9 +17,6 @@ public class MemberController {
         log.info("회원가입 페이지 진입");
     }
 
-    @GetMapping("login")
-    public void GETLogin(){
-        log.info("로그인 페이지 진입");
-    }
+
 
 }

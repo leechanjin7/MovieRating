@@ -12,7 +12,7 @@ for (let i = 0; i < genre_btns.length; i++) {
 }
 
 
-//설정 창 열고 닫기 이벤트--------------------
+//로그인 창 열고 닫기 이벤트--------------------
 const closeItems = document.querySelectorAll(".close");
 const settingspage = document.querySelectorAll(".l_options");
 const settingsItems= document.querySelectorAll(".login_button");

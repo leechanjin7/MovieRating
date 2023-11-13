@@ -21,7 +21,7 @@
     text-align: center;
 }
 .main{
-    height: 1300px;
+    height: 1000px;
 }
 .showMovie ul {
     display: flex; /* li 요소들을 가로로 배열하기 위해 flex 컨테이너로 설정 */
@@ -103,3 +103,25 @@
 .desc{
     margin-bottom: 20px;
 }
+
+.showMovie .movie-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.showMovie .movie-list li {
+    flex-basis: 20%; /* 리스트 항목이 화면 너비의 20%를 차지하도록 설정 */
+}
+
+/*로그인 성공후*/
+.name{
+    font-weight: bold;
+    font-size: 2em;
+}
+.rightbox {
+     display: flex;
+     gap: 2rem;
+ }
+ a.link {
+     margin-left: 2rem;
+ }
