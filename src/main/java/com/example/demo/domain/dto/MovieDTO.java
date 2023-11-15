@@ -13,6 +13,7 @@ public class MovieDTO {
 	private String movieInfo;
 	private String movieType;
 	private String movieAct;
+	private String movieImg;
 	private String movieDic;
 	private String movieRelease;
 	private int movieRating;

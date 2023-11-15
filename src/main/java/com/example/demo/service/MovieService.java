@@ -5,6 +5,7 @@ import com.example.demo.domain.dto.Search;
 import com.example.demo.domain.paging.Criteria;
 import com.example.demo.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class MovieService {
     @Autowired
     private final MovieMapper mapper;
@@ -44,7 +46,14 @@ public class MovieService {
         return mapper.getListPaging(criteria, search);
     }
 
+//    public MovieDTO getMovieById(int movieId){
+//        return mapper.select(movieId);
+//    }
 
-
+    public MovieDTO getMovieById(int movieId){
+        MovieDTO movie = mapper.select(movieId);
+        log.info("ID {}로 영화 검색: {}", movieId, movie);
+        return movie;
+    }
 
 }

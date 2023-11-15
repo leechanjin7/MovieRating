@@ -33,7 +33,7 @@
   <header>
       <div class="boxalign">
           <h1 class="logo">
-              <a href="#"><img src="/image/Logo.png" alt="상위로고" /></a>
+              <a th:href="@{/main}"><img src="/image/Logo.png" alt="상위로고" /></a>
           </h1>
 
           <nav>
@@ -90,10 +90,10 @@
           <div class="showMovie" >
               <ul>
                   <li th:each="list : ${list}">
-                      <a  th:href="'/movieDetail/' + ${list.movieId}">
+                      <a  th:href="'/detail/' + ${list.movieId}">
                           <div class="showimg">
                               <figure>
-                                  <img class="showPoster" src="/image/바람.jpg" style="width:100%;">
+                                  <img class="showPoster" th:src="${list.movieImg}" style="width:100%;">
                                   <figcaption>
                                       <div class="desc">
                                           <div style="color: #f2b90a; font-weight: bold; font-size: 15px;" >개봉일</div>
@@ -119,17 +119,17 @@
       </div>
   </section>
           <div class="paging">
-              <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${criteria.amount})}"
+              <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
                  class="pagebtn"> <
               </a>
 
               <th:block th:each="pageNum : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
-                  <a th:href="@{/main(page=${pageNum}, amount=${criteria.amount})}" class="pagebtn">
+                  <a th:href="@{/main(page=${pageNum}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}" class="pagebtn" >
                       <span th:text="${pageNum}"></span>
                   </a>
               </th:block>
 
-              <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${criteria.amount})}"
+              <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
                  class="pagebtn">
                   >
               </a>

@@ -49,6 +49,9 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // 추가
 	implementation 'javax.servlet:jstl' // 추가
 
+	//	이메일 인증관련
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.1'
+
 //	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 //	implementation 'org.springframework.security:spring-security-core:5.4.2'

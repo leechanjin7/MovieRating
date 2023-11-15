@@ -5,6 +5,7 @@ package com.example.demo.mapper;
 import com.example.demo.domain.dto.MovieDTO;
 import com.example.demo.domain.paging.Criteria;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,16 +43,35 @@ public class MovieMapperTests {
 		movieMapper.insert(movie);
 	}
 
-	@Test
-	public void selectAll(Criteria criteria){
+//	@Test
+//	public void selectAllTest(){
+//
+//		Criteria criteria = new Criteria();
+//		List<MovieDTO> list = movieMapper.selectAll(criteria);
+//
+//		log.info(list.toString());
+//	}
 
-
-		List<MovieDTO> list = movieMapper.selectAll(criteria);
-		System.out.println("결과 : " + list);
-
-//		movieMapper.selectAll().stream().map(MovieVO::toString).forEach(log::info);
-	}
-
-
-
+//	//영화페이징테스트
+//	@Test
+//	public void moviePagingTest(){
+//
+//		Criteria criteria = new Criteria();
+//		criteria.setSkip(1);
+//		criteria.setAmount(10);
+//
+//		List<MovieDTO> movies = movieMapper.moviePaging();
+//		Assertions.assertNotNull(movies);
+//		Assertions.assertEquals(10, movies.size());
+//
+//		for(MovieDTO movie : movies) {
+//            Assertions.assertNotNull(movie.getMovieName());
+//            Assertions.assertNotNull(movie.getMovieTime());
+//		}
+//
+//		System.out.println(movies);
+//
+//
+//
+//	}
 }

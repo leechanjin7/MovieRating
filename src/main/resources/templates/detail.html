@@ -13,14 +13,14 @@
     <header>
       <div class="boxalign">
         <h1 class="logo">
-          <a href="#"><img src="/image/Logo.png" alt="상위로고" /></a>
+          <a href="/main"><img src="/image/Logo.png" alt="상위로고" /></a>
         </h1>
 
         <nav>
           <ul>
-            <li><a href="#">영화</a></li>
+            <li><a href="/main">영화</a></li>
             <li class="genre_button">
-              <a href="#">장르</a>
+              <a href="/main">장르</a>
             </li>
             <li><a href="#">찜한목록</a></li>
             <div class="genre_pop">
@@ -61,12 +61,12 @@
         <div>
           <div class="top-image">
             <div id="top-text">
-              <div class="boxalign top-textarea">
-                <span class="movie_title">${제목}</span> &nbsp
-                <span class="sub_title" style="font-size: 25px">${부제목}</span>
-                <div class="movie_genre">${개봉일}·${장르}</div>
+              <div class="boxalign top-textarea" th:each="movie : ${movie}">
+                <span class="movie_title" th:text="${movie.movieName}">제목</span> &nbsp
+                <span class="sub_title" th:text="${movie.movieName}">부제목</span>
+                <div class="movie_genre" th:text="${movie.movieRelease} + '·' + ${movie.movieType}">개봉일·장르</div>
 
-                <div>${러닝타임}</div>
+                <div th:text="${movie.movieTime}">러닝타임</div>
               </div>
             </div>
           </div>
@@ -75,15 +75,16 @@
 
       <section class="body-middle boxalign">
         <div class="poster_top">
-          <div name="Start-image">⭐</div>
-          <div name="Movie-avg-rate">${총평점}</div>
+          <div name="Start-image" >⭐</div>
+          <div name="Movie-avg-rate" th:text="${movie.movieRating}">${총평점}</div>
         </div>
 
         <div>
           <div class="poster_main">
-            <div class="Poster-image" name="Poster-image">
+            <div class="Poster-image" name="Poster-image" th:each="list : ${list}">
               <img
-                src="/image/poster_img.jpg"
+
+                th:src="${list.movieImg}"
                 alt=""
                 style="height: 570px; max-width: 100%"
               />
@@ -156,7 +157,7 @@
               <hr />
 
               <section>
-                <div class="movie_introduce">${영화설명}</div>
+                <div class="movie_introduce" th:text="${movie.movieInfo}" >${영화설명}</div>
               </section>
 
               <br />
@@ -182,7 +183,7 @@
                 <div>
                   <div class="info">
                     <div>감독</div>
-                    <div>이름(m.dir)</div>
+                    <div th:text="${movie.movieDic}">이름(m.dir)</div>
                   </div>
                 </div>
               </div>

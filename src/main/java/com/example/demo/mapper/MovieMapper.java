@@ -42,4 +42,5 @@ public interface MovieMapper {
 	//영화 검색 갯수
 	public int searchCountAll(@Param("search")Search search);
 
+
 }

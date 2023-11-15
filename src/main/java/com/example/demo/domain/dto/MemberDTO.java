@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class UserDTO {
+public class MemberDTO {
 	
 	//회원id
 	private String userId;
