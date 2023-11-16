@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/login.css" />
     <title>Document</title>
+    <style>
+        .active {
+            background-color: #f2b90a; /* 원하는 색깔로 변경해주세요 */
+            color: #ffffff; /* 원하는 텍스트 색깔로 변경해주세요 */
+            /* 필요한 다른 스타일 속성들을 추가할 수 있습니다 */
+            border:1px solid #f2b90a;
+        }
+    </style>
 </head>
 <body>
 <div class="l_options">
@@ -17,7 +25,7 @@
             <button class="close">&times;</button>
         </div>
         <div class="l_settingtitle">
-            <form action="" method="POST">
+            <form action="/login" method="POST">
 
                 <input type="text" name="username" placeholder="아이디를 입력하세요." required>
 
@@ -68,8 +76,17 @@
                 </span>
             </form>
 
-            <a href="#" class="login_button">로그인</a>
-            <a href="/member/join" class="join_button">회원가입</a>
+            <div class="rightbox">
+                <a th:if="${#authorization.expression('isAnonymous()')}" href="#" class="login_button">로그인</a>
+                <a th:if="${#authorization.expression('isAnonymous()')}" href="/member/join" class="join_button">회원가입</a>
+                <div th:if="${#authorization.expression('!isAnonymous()')}" class="rightbox">
+                    <div>
+                        <span class="" th:text="${#authentication.name}"></span>님
+                    </div>
+                    <a href="/logout" class="join_button">로그아웃</a>
+                </div>
+                <!--            <a th:if="${#authorization.expression('!isAnonymous()')}" href="/logout" class="link">로그아웃</a>-->
+            </div>
         </div>
     </div>
 </header>
@@ -124,7 +141,8 @@
     </a>
 
     <th:block th:each="pageNum : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
-        <a th:href="@{/main(page=${pageNum}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}" class="pagebtn" >
+        <a th:href="@{/main(page=${pageNum}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+           class="pagebtn" th:classappend="${pageNum == pageMaker.criteria.pageNum ? 'active' : ''}">
             <span th:text="${pageNum}"></span>
         </a>
     </th:block>

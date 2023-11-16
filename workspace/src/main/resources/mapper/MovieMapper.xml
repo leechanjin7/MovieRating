@@ -59,11 +59,11 @@
         </if>
     </sql>
 
-
+    <!-- 평점순영화리스트조회 -->
     <select id="getList" resultType="com.example.demo.domain.dto.MovieDTO">
         SELECT * FROM TBL_MOVIE
         <include refid="search"/>
-        ORDER BY MOVIERATING ASC
+        ORDER BY MOVIERATING DESC
         LIMIT #{cri.skip}, #{cri.amount}
     </select>
 
