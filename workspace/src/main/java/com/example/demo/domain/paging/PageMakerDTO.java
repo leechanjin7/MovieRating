@@ -1,41 +1,41 @@
 package com.example.demo.domain.paging;
 
-
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+@Component
 @Data
+@RequiredArgsConstructor
 public class PageMakerDTO {
 
-    //시작 페이지
+    // 시작페이지
     private int startPage;
-    //끝 페이지
+    // 마지막페이지
     private int endPage;
-    //이전 페이지, 다음 페이지 존재 유무
+    // 이전페이지, 다음페이지 존재유무
     private boolean prev, next;
-    //전체 게시물 수
-    private int total;
-    //현재 페이지, 페이지 당 게시물 표시수 정보
+    // 전체 게시물 수
+    private int totalPages;
+    // 현재페이지,페이당 게시물 표시 수 정보(정의한 Criteria;)
     private Criteria criteria;
 
-    public PageMakerDTO(Criteria criteria, int total){
-        this.criteria = criteria;
-        this.total = total;
 
-        //마지막 페이지
-        this.endPage = (int) (Math.ceil(criteria.getPageNum()/10.0) * 10);
-        //시작 페이지
-        this.startPage = this.endPage - 9;
-        //전체 마지막 페이지
-        int realEnd = (int) Math.ceil(total * 1.0/criteria.getAmount());
-        //전체 마지막 페이지가 화면에 보이는 마지막페이지보다 작은 경우, 보이는 페이지 값 조정
+    public PageMakerDTO(Criteria criteria,int totalPages){
+        this.totalPages = totalPages;
+        this.criteria = criteria;
+        this.endPage =(int)(Math.ceil(criteria.getPageNum()/10.0) *10);
+        this.startPage = this.endPage -9;
+        int realEnd =(int)Math.ceil(totalPages *1.0 /criteria.getAmount());
+
         if(realEnd < this.endPage){
             this.endPage = realEnd;
         }
 
-        //시작 페이지 값이 1보다 큰경우 true
         this.prev = this.startPage > 1;
-        //마지막 페이지 값이 1보다 큰 경우 true
         this.next = this.endPage < realEnd;
+
+
+
     }
 }

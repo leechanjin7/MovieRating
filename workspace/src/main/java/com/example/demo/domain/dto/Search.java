@@ -14,7 +14,8 @@ public class Search {
     private String keyword;
     private String type;
 
-    public List<String> getTypes() {
-        return new ArrayList<>(Arrays.asList(type.split("")));
+    public List<String> getTypes(){
+        return new ArrayList<String>(Arrays.asList(type.split("")));
     }
+
 }

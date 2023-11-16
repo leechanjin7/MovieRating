@@ -10,19 +10,21 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class UserService {
     @Autowired
-    private UserMapper mapper;
+    private UserMapper usermapper;
 
+    //회원가입
+    public void userJoin(UserDTO userDTO){
+        usermapper.userJoin(userDTO);
+    }
 
-    public UserDTO getUserInfoByEmail(String Userid) {
+    public UserDTO getUserInfoByEmail(String userId) {
 
-        return mapper.selectOne(Userid);
+        return usermapper.selectOne(userId);
 
     }
 
-    public UserDTO userSearch(String userid) {
-        log.info("UserService's user search at userid: " + userid);
-        return mapper.selectOne(userid);
+    public UserDTO userSearch(String userId) {
+        log.info("UserService's user search at userid: " + userId);
+        return usermapper.selectOne(userId);
     }
 }
-
-

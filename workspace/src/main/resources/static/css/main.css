@@ -1,18 +1,68 @@
 .orderby{
     height: 130px;
-    display: flex; /* flex 컨테이너로 설정 */
-    align-items: flex-end; /* 수직 가운데 정렬 설정 */
+
     /* border: 1px solid black; */
-    margin-bottom: 0;
-    width: 1300px;
+    padding-top:80px;
     justify-content: flex-end; /* 가로 오른쪽 정렬 설정 */
 }
-.orderby>.arrayO{
+.arrayO{
     display: flex;
-    flex-direction: column;
+    width:1200px
     align-items: flex-end;
     margin-right: 10px; /* 원하는 간격으로 조절 가능 */
-    
+    justify-content:space-between;
+}
+.search_icon{
+position:absolute;
+right:10px;
+}
+.bunch{
+height:30px;}
+
+#sFld{
+outline:none;
+border:none;
+color: #f2b90a;
+border:1px solid #f2b90a;
+width:80px;
+height:40px;
+margin-right:10px;
+font-weight:bold;
+}
+#sFld > option{
+width:50px;
+height:40px;
+}
+.bunch > input::placeholder{
+font-weight:bold;
+color:white;
+}
+.bunch > input{
+color:white;
+outline:none;
+padding-left:5px;
+background:#f2b90a;
+border:none;
+width:250px;
+height:40px;
+}
+.showMovie > ul{
+width:1300px;
+display:flex;
+height:700px;
+flex-wrap:wrap;
+justify-content:start;
+gap:30px;
+}
+.showMovie > ul > li{
+width:18%;
+
+}
+.total_movie_cnt{
+font-size:20px;
+font-weight:bold;
+color:#000d;
+
 }
 .orderby>.arrayO> select{
     width: 150px; /* select 요소의 너비를 조절 */
@@ -20,51 +70,30 @@
     font-size: 20px; /* 글자 크기를 조절*/
     text-align: center;
 }
-.main{
-    height: 1000px;
-}
-.showMovie ul {
-    display: flex; /* li 요소들을 가로로 배열하기 위해 flex 컨테이너로 설정 */
-    list-style-type: none; /* 기본 리스트 스타일 제거 */
-    padding: 0;
-    margin: 0;
-    /* border: 2px solid green; */
-    height: 500px;
-    align-items: center;
-  }
-  
-  .showMovie li {
-    flex: 1; /* 각 li 요소에 동일한 비율의 공간을 할당합니다. */
-    /* margin-right: 10px; li 요소 사이의 간격을 조절할 수 있습니다. */
-    /* border: 1px solid red; */
-    padding: 0px 8px;
-    
-}
 
 .showimg{
-    /* border: 5px solid pink;
-    width: 180px; */
+    height:300px;
+    margin-bottom:10px;
+    overflow:hidden;
 }
 .showTitle{
+    font-weight:bold;
     color: rgb(31, 31, 31);
     font-size: 15px;
     /* font-weight: 400; */
     letter-spacing: -0.5px;
-    height: 30px;
-    line-height: 30px;
 }
 .showRating{
     color: #74747b;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: -0.3px;
-    line-height: 15px;
 }
 
 /* 페이징 */
 .paging{
     display: flex;
-    height: 50px;
+    height: 100px;
     /* border: 1px solid black; */
     justify-content: center;
     gap: 10px; 
@@ -77,9 +106,10 @@
 .showMovie a{
     display: block;
     overflow: hidden;
-    position: relative;/* absolute의 기본기준은 body로 처리 - 현재 요소로 기준변경 */
 }
-
+.showMovie figure > img{
+    width:;
+}
 .showMovie figure{
     width: 100%; height: 100%;
     position: relative;
@@ -92,7 +122,7 @@
     color: #fff;
     text-align: center;
     line-height: 30px;
-    padding-top: 50px;
+    padding-top: 30px;
     opacity: 0; /* 처음엔 안보이고 */
     transition: 0.4s;
 }
@@ -100,28 +130,25 @@
 .showMovie a:focus figcaption{
     opacity: 1;
 }
+.main{
+height:900px;
+}
 .desc{
     margin-bottom: 20px;
 }
 
-.showMovie .movie-list {
-    display: flex;
-    flex-wrap: wrap;
-}
+.pagebtn{
+text-align: center;
+width:50px;
+height:50px;
+line-height:50px;
+font-size:18px;
+font-weight:bold;
+border:1px solid #000;
+border-radius:50px;
 
-.showMovie .movie-list li {
-    flex-basis: 20%; /* 리스트 항목이 화면 너비의 20%를 차지하도록 설정 */
 }
-
-/*로그인 성공후*/
-.name{
-    font-weight: bold;
-    font-size: 2em;
-}
-.rightbox {
-     display: flex;
-     gap: 2rem;
- }
- a.link {
-     margin-left: 2rem;
+.pagebtn:active {
+        background: black;
+        color: white;
  }

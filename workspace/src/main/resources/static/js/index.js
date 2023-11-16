@@ -71,3 +71,15 @@ function toggleReviewInputForm() {
   }
 }
 reviewWriteButton.addEventListener("click", toggleReviewInputForm);
+
+//페이지 클릭 시 색 바뀌는것
+const pageButtons = document.querySelectorAll(".pagebtn");
+
+        pageButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                // 모든 페이지 버튼에서 "active" 클래스를 제거합니다.
+                pageButtons.forEach(btn => btn.classList.remove("active"));
+                // 현재 클릭된 페이지 버튼에 "active" 클래스를 추가합니다.
+                this.classList.add("active");
+            });
+        });

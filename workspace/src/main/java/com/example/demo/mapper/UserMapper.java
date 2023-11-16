@@ -13,19 +13,19 @@ public interface UserMapper {
 	public UserDTO select(int userId);
 
 	@Select("select * from tbl_user where userid=#{userid}")
-	public  UserDTO selectOne(@Param("userid") String userid);
+	public UserDTO selectOne(@Param("userid") String userId);
 
 	//회원가입
-	public void insert(UserDTO userDTO);
+	public void userJoin(UserDTO userDTO);
 
 	//회원정보 수정
 	public void update(UserDTO userDTO);
-
+	
 	//회원탈퇴
 	public void delete(int userId);
-
-
-
+	
+	
+	
 
 
 }

@@ -42,10 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/css/**","/js/**","/image/**").permitAll()
-                .antMatchers("/","/member/join","/logout","/main").permitAll()
-                .antMatchers("/user/**").permitAll()
-                .antMatchers("/board/list").permitAll()
-                .antMatchers("/board/read","/board/post","/board/delete","/board/update").hasAnyRole("USER","ADMIN")
+                .antMatchers("/**").permitAll()
+//                .antMatchers("/","/member/join","/logout","/main").permitAll()
+//                .antMatchers("/user/**").permitAll()
+//                .antMatchers("/board/list").permitAll()
+//                .antMatchers("/board/read","/board/post","/board/delete","/board/update").hasAnyRole("USER","ADMIN")
 
 
                 .anyRequest().authenticated()									//나머지 URL은 모두 인증작업이 완료된 이후 접근가능
@@ -82,11 +83,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //----------------------------------------------------------------
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user")
-                .password(passwordEncoder().encode("1234"))
-                .roles("USER");
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("user")
+//                .password(passwordEncoder().encode("1234"))
+//                .roles("USER");
 //		auth
 //			.inMemoryAuthentication()
 //				.withUser("member")
@@ -98,8 +99,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.password(passwordEncoder().encode("1234"))
 //				.roles("ADMIN");
 
-//		auth.userDetailsService(principalDetailsService)
-//			.passwordEncoder(passwordEncoder());
+		auth.userDetailsService(principalDetailsService)
+			.passwordEncoder(passwordEncoder());
 
     }
 
