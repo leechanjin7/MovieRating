@@ -9,7 +9,7 @@
     </select>
     <!-- 영화단건조회  -->
     <select id="select" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING, MOVIEIMG
         FROM TBL_MOVIE
         WHERE MOVIEID = #{movieId}
     </select>
@@ -17,21 +17,21 @@
     <!-- 영화등록  -->
     <insert id="insert">
         INSERT INTO tbl_movie
-        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING)
-        VALUES(#{movieId}, #{movieName}, #{movieTime}, #{movieInfo}, #{movieType}, #{movieDic}, #{movieAct},
+        (MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING, MOVIEIMG)
+        VALUES(#{movieId}, #{movieName}, #{movieTime}, #{movieInfo}, #{movieType}, #{movieDic}, #{movieAct},#{movieImg}
         #{movieRelease},#{MOVIERATING});
     </insert>
 
     <!-- 영화전체목록조회 -->
     <select id="selectAll" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING, MOVIEIMG
         FROM TBL_MOVIE
         ORDER BY MOVIEID
     </select>
 
     <!-- 영화목록 페이징처리 -->
     <select id="moviePaging" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING, MOVIEIMG
         FROM TBL_MOVIE
         ORDER BY MOVIEID
         LIMIT #{skip}, #{amount}
@@ -79,12 +79,11 @@
 
     <!-- 영화목록 평점순 조회 -->
     <select id="movieRatingSelect" resultType="com.example.demo.domain.dto.MovieDTO">
-        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING,MOVIEIMG
         FROM TBL_MOVIE
         ORDER BY MOVIERATING DESC
         LIMIT #{skip}, #{amount}
     </select>
-
 
 
 

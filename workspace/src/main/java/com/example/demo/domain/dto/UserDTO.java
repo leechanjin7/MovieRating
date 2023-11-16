@@ -5,11 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class MemberDTO {
+public class UserDTO {
 	
 	//회원id
 	private String userId;
-
 	//회원이름
 	private String userName;
 	//회원 pw

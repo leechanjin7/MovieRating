@@ -52,13 +52,14 @@ dependencies {
 	//	이메일 인증관련
 	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.1'
 
-//	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	implementation 'org.springframework.security:spring-security-core:5.4.2'
-//	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
-//	implementation 'org.springframework.security:spring-security-web:5.4.2'
-//	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
-//	implementation 'org.springframework.security:spring-security-config:5.4.2'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-core:5.4.2'
+	testImplementation 'org.springframework.security:spring-security-test'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+	implementation 'org.springframework.security:spring-security-web:5.4.2'
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
+	implementation 'org.springframework.security:spring-security-config:5.4.2'
 //	// https://mvnrepository.com/artifact/org.junit.platform/junit-platform-commons
 //	implementation 'org.junit.platform:junit-platform-commons:1.8.2'
 
