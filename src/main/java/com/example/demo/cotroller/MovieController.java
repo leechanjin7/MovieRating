@@ -42,19 +42,27 @@ public class MovieController {
 
     }
 
-    @GetMapping("/detail")
-    public void getDetail(){
 
-    }
 
     @GetMapping("/detail/{movieId}")
-    public String showMovieDetail(@PathVariable int movieId, Model model) {
+    public String showMovieDetail(@PathVariable int movieId, Model model,Search search,@RequestParam(defaultValue = "1") int page) {
         MovieDTO movie = service.getMovieById(movieId);
 
         model.addAttribute("movie", movie);
-        model.addAttribute("list", List.of(movie));
+        model.addAttribute("lists", List.of(movie));
 //        log.info(List.of(movie).toString());
         log.info("Movie Image URL: {}", movie.getMovieImg());
+
+        Criteria criteria = new Criteria(page, 10); /*페이지당 몇개의 포스터가 보여질 건지*/
+        List<MovieDTO> list = service.getList(criteria, search);
+        model.addAttribute("list", list);
+        int total = service.getTotal(search);
+        PageMakerDTO pageMaker = new PageMakerDTO(criteria, total);
+
+        int totalMovieCount = service.getTotal(search);
+        model.addAttribute("totalMovieCount", totalMovieCount);
+        model.addAttribute("pageMaker", pageMaker);
+        model.addAttribute("criteria", criteria);
 
         return "detail";
 
