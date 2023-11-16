@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/join.css"/>
     <link rel="stylesheet" href="/css/login.css"/>
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
 
 
@@ -78,78 +80,81 @@
         <div style="display: flex; justify-content: center; margin: 30px auto;">
             <span style="color: orange; font-size:22px; "><b>회원가입</b></span>
         </div>
-
-
-    </div>
-    <div class="join_form" style="background-color:rgb(233, 231, 231); height: 410px;">
-        <div class="content">
-            <span class="content1">이름</span>
-            <input type="text" class="box_st1">
-        </div>
-        <div class="content">
-            <span class="content1">아이디</span>
-            <input type="text" class="box_st1">
-        </div>
-        <div class="content">
-            <span class="content1">비밀번호</span>
-            <input type="password" class="box_st1">
-        </div>
-        <div class="content">
-            <span class="content1">비밀번호 확인</span>
-            <input type="password" class="box_st1">
-        </div>
-        <div class="content">
-            <span class="content1">이메일</span><br>
-            <input type="text" class="box_st2">
-            <span style="font-weight: bold; font-size: 15px;">@</span>
-            <input type="text" class="box_st2">
-            &nbsp;
-            <button type="submit">확인</button>
-        </div>
     </div>
 
-    <div class="boxalign polBox">
-
-        <div class="agrbox">
-            <p style="font-size:25px; font-weight: bold;">약관동의</p>
-            <br>
-            <p style="font-size: 13px; color: gray; line-height: 25px;">필수 동의를 누르지 않을 경우 서비스 가입이 불가하며,<br>
-                마케팅 동의를 선택하지 않을 경우 혜택에서 제외 될 수 있습니다.
-            </p>
-        </div>
-
-        <div class="agreebox1">
-            <input type="checkbox"> 전체약관동의
-        </div>
-        <div class="agrbox2">
-            <div class="agreebox2">
-                <input type="checkbox"> <span class="span1">[필수]</span> <span
-                    style="display: inline-block; height: 15px; width : 300px;">이용약관</span>
-                <button class="conbtn" type="button">내용보기</button>
+    <form action="/member/join" method="post">
+        <div class="join_form" style="background-color:rgb(233, 231, 231); height: 410px;">
+            <div class="content">
+                <span class="content1">아이디</span>
+                <input type="text" class="box_st1" name="userId">
             </div>
-            <div class="agreebox2">
-                <input type="checkbox"> <span class="span1">[필수]</span> <span
-                    style="display: inline-block; height: 15px; width : 300px;">개인정보 수집 이용동의</span>
-                <button class="conbtn" type="button">내용보기</button>
+            <div class="content">
+                <span class="content1">이름</span>
+                <input type="text" class="box_st1" name="userName">
             </div>
-            <div class="agreebox2">
-                <input type="checkbox"><span class="span2">[선택]</span> <span
-                    style="display: inline-block; height: 15px; width : 300px;">이벤트 및 혜택
-            이용동의</span>
-                <button class="conbtn" type="button">내용보기</button>
+            <div class="content">
+                <span class="content1">비밀번호</span>
+                <input type="password" class="box_st1" name="userPw">
             </div>
-            <div class="agreebox2">
-                <input type="checkbox"><span class="span2">[선택] </span><span
-                    style="display: inline-block; height: 15px; width : 300px;"> 맞춤 마케팅을 위한
-            정보수집,이용동의</span>
-                <button class="conbtn" type="button">내용보기</button>
+            <div class="content">
+                <span class="content1">비밀번호 확인</span>
+                <input type="password" class="box_st1">
             </div>
-            <div style="display: flex; justify-content: center; margin: 30px auto;">
-                <button type="submit" class="joinbtn">회원가입</button>
+            <div class="content">
+                <span class="content1">이메일</span>
+                <input type="email" class="box_st1" name="userEmail">
+<!--                <span style="font-weight: bold; font-size: 15px;">@</span>-->
+<!--                <input type="text" class="box_st2">-->
+                <button type="submit">인증</button>
+            </div>
+            <div class="content">
+                <span class="content1">생년월일</span>
+                <input type="text" class="box_st1" name="userBirthday">
             </div>
         </div>
 
-    </div>
+        <div class="boxalign polBox">
+
+            <div class="agrbox">
+                <p style="font-size:25px; font-weight: bold;">약관동의</p>
+                <br>
+                <p style="font-size: 13px; color: gray; line-height: 25px;">필수 동의를 누르지 않을 경우 서비스 가입이 불가하며,<br>
+                    마케팅 동의를 선택하지 않을 경우 혜택에서 제외 될 수 있습니다.
+                </p>
+            </div>
+
+            <div class="agreebox1">
+                <input type="checkbox"> 전체약관동의
+            </div>
+            <div class="agrbox2">
+                <div class="agreebox2">
+                    <input type="checkbox"> <span class="span1">[필수]</span> <span
+                        style="display: inline-block; height: 15px; width : 300px;">이용약관</span>
+                    <button class="conbtn" type="button">내용보기</button>
+                </div>
+                <div class="agreebox2">
+                    <input type="checkbox"> <span class="span1">[필수]</span> <span
+                        style="display: inline-block; height: 15px; width : 300px;">개인정보 수집 이용동의</span>
+                    <button class="conbtn" type="button">내용보기</button>
+                </div>
+                <div class="agreebox3">
+                    <input type="checkbox"><span class="span2">[선택]</span> <span
+                        style="display: inline-block; height: 15px; width : 300px;">이벤트 및 혜택
+                이용동의</span>
+                    <button class="conbtn" type="button">내용보기</button>
+                </div>
+                <div class="agreebox3">
+                    <input type="checkbox"><span class="span2">[선택] </span><span
+                        style="display: inline-block; height: 15px; width : 300px;"> 맞춤 마케팅을 위한
+                정보수집,이용동의</span>
+                    <button class="conbtn" type="button">내용보기</button>
+                </div>
+                <div style="display: flex; justify-content: center; margin: 30px auto;">
+                    <button type="submit" class="joinbtn" style="cursor:pointer;">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </section>
 <footer>
     <div class="boxalign">
@@ -182,6 +187,11 @@
 
 <script src="/js/index.js"></script>
 <script src="/js/login.js"></script>
+<script src="/js/join.js"></script>
+<script>
+
+</script>
+
 </body>
 
 </html>

@@ -53,15 +53,12 @@ public class MovieController {
 
         model.addAttribute("movie", movie);
         model.addAttribute("list", List.of(movie));
+//        log.info(List.of(movie).toString());
         log.info("Movie Image URL: {}", movie.getMovieImg());
 
         return "detail";
 
     }
-    }
 
 
-
-
-
-
+}

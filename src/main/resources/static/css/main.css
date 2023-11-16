@@ -12,12 +12,23 @@
     margin-right: 10px; /* 원하는 간격으로 조절 가능 */
     justify-content:space-between;
 }
+
+.bunch{
+height:30px;
+position:relative;
+}
+
+
+
 .search_icon{
+display:block;
+width:18px;
+height:18px;
 position:absolute;
 right:10px;
+top:50%;
+transform:translateY(-50%);;
 }
-.bunch{
-height:30px;}
 
 #sFld{
 outline:none;

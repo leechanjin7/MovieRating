@@ -101,13 +101,6 @@ nav > ul > li:nth-child(2) {
   font-weight: bold;
 }
 
-.search_icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 50px;
-  width: 30px;
-}
 
 nav > ul {
   display: flex;
@@ -173,3 +166,10 @@ footer {
 }
 
 /*  section 그냥 공간 차이용으로 만듬*/
+
+/* 2023.11.16 로그인메뉴창 수정*/
+.rightbox {
+    width: 220px;
+    display: flex;
+    justify-content: space-around;
+}

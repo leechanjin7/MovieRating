@@ -33,7 +33,7 @@ public class MovieService {
 
     //영화 총 갯수
     public int getTotal(Search search){
-            return mapper.searchCountAll(search);
+        return mapper.searchCountAll(search);
     }
 
     //영화목록조회(검색추가)

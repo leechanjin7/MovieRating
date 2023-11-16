@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class MovieDTO {
-	
+
 	private int movieId;
 	private String movieName;
 	private String movieTime;
@@ -18,6 +18,6 @@ public class MovieDTO {
 	private String movieRelease;
 	private int movieRating;
 
-	
+
 
 }
