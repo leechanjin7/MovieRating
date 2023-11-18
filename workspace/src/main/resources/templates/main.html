@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/login.css" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .active {
             background-color: #f2b90a; /* 원하는 색깔로 변경해주세요 */
@@ -96,11 +97,10 @@
         <div class="orderby">
             <div class="arrayO">
                 <div class="total_movie_cnt" th:text="'총 영화수 : '+${totalMovieCount}+'개'">영화수</div>
-                <select>
-                    <option value="recomend">추천순</option>
-                    <option value="alphabetical">가나다순</option>
-                    <option value="avgscore">평균별점순</option>
-                    <option value="newworks">신작순</option>
+                <select id="orderBySelect" name="orderBy">
+                    <option value="recommend" th:selected="${orderBy == 'recommend'}">추천순</option>
+                    <option value="alphabetical" th:selected="${orderBy == 'alphabetical'}">가나다순</option>
+                    <option value="newworks" th:selected="${orderBy == 'newworks'}">신작순</option>
                 </select>
             </div>
         </div>
@@ -136,18 +136,18 @@
     </div>
 </section>
 <div class="paging">
-    <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+    <a th:if="${pageMaker.prev}" th:href="@{/main(page=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword}, orderBy=${orderBy})}"
        class="pagebtn"> <
     </a>
 
     <th:block th:each="pageNum : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
-        <a th:href="@{/main(page=${pageNum}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+        <a th:href="@{/main(page=${pageNum}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword}, orderBy=${orderBy})}"
            class="pagebtn" th:classappend="${pageNum == pageMaker.criteria.pageNum ? 'active' : ''}">
             <span th:text="${pageNum}"></span>
         </a>
     </th:block>
 
-    <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+    <a th:if="${pageMaker.next}" th:href="@{/main(page=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword}, orderBy=${orderBy})}"
        class="pagebtn">
         >
     </a>
@@ -184,5 +184,7 @@
 
 <script src="/js/index.js"></script>
 <script src="/js/login.js"></script>
+<script src="/js/main.js"></script>
+
 </body>
 </html>

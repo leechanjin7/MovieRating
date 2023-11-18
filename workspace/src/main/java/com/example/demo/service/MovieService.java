@@ -36,10 +36,22 @@ public class MovieService {
         return mapper.searchCountAll(search);
     }
 
-    //영화목록조회(검색추가)
+    //영화목록조회(검색추가)(평점순)
     public List<MovieDTO> getList(Criteria criteria, Search search){
         return mapper.getList(criteria, search);
     }
+
+    //영화목록조회(검색추가)(가나다순)
+    public List<MovieDTO> getList2(Criteria criteria, Search search){
+        return mapper.getList2(criteria, search);
+    }
+
+    //영화목록조회(검색추가)(신작순)
+    public List<MovieDTO> getList3(Criteria criteria, Search search){
+        return mapper.getList3(criteria, search);
+    }
+
+
 
     //목록페이징(검색추가)
     public List<MovieDTO> getListPaging(Criteria criteria, Search search){

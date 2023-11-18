@@ -67,6 +67,22 @@
         LIMIT #{cri.skip}, #{cri.amount}
     </select>
 
+    <!-- 가나다순영화리스트조회 -->
+    <select id="getList2" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT * FROM TBL_MOVIE
+        <include refid="search"/>
+        ORDER BY MOVIENAME ASC
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <!-- 신작순영화리스트조회 -->
+    <select id="getList3" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT * FROM TBL_MOVIE
+        <include refid="search"/>
+        ORDER BY MOVIERELEASE DESC
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
     <!-- 영화 총 갯수 -->
     <select id="getTotal" resultType="int">
         SELECT COUNT(*) FROM TBL_MOVIE
