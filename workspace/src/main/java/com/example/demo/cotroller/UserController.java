@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.HashMap;
@@ -104,16 +106,16 @@ public class UserController {
     }
 //    회원 탈퇴
     @GetMapping("/mypage/remove")
-    public RedirectView remove(Principal principal, Model model){
+    public RedirectView remove(Principal principal, Model model, HttpServletRequest request, HttpServletResponse response){
         String userId = principal.getName();
-        userService.delete(userId);
         try {
             userService.delete(userId);
             model.addAttribute("successMessage", "탈퇴가 성공적으로 되었습니다.");
+            request.getSession().invalidate();
         } catch (Exception e) {
             // 탈퇴 실패 시에 대한 처리
             model.addAttribute("errorMessage", "탈퇴 중 오류가 발생했습니다.");
-            return new RedirectView("mypagemodi");
+            return new RedirectView("/mypagemodi");
         }
         return new RedirectView("/main");
     }

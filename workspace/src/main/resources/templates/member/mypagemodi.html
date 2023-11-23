@@ -120,10 +120,13 @@
                 </div>
             </form>
             <div>
-                <form th:action="@{/member/mypage/remove}" method="get" th:object="${userDTO}" onsubmit="return confirmWithdraw()">
+                <form class="removeform" th:action="@{/member/mypage/remove}" method="get" th:object="${userDTO}" onsubmit="return confirmWithdraw()">
                     <input type="hidden" name="userId" th:value="*{userId}">
-                    <button type="submit" class="signup_submit_1" onclick="">회원탈퇴</button>
+                    <button type="submit" class="signup_submit_2" onclick="">회원탈퇴</button>
                 </form>
+                <div th:if="${successMessage}" class="success-message">
+                    <p th:text="${successMessage}"></p>
+                </div>
             </div>
         </div>
     </div>
