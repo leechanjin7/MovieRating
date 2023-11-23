@@ -59,6 +59,13 @@
         </if>
     </sql>
 
+    <!-- 영화장르별리스트조회 -->
+    <select id="getListByGenre" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING, MOVIEIMG
+        FROM TBL_MOVIE
+        WHERE MOVIETYPE = #{movietype};
+    </select>
+
     <!-- 평점순영화리스트조회 -->
     <select id="getList" resultType="com.example.demo.domain.dto.MovieDTO">
         SELECT * FROM TBL_MOVIE

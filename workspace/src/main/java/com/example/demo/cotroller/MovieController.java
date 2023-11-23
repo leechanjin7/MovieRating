@@ -26,22 +26,27 @@ public class MovieController {
 
     //    영화목록(페이징 적용)
     @GetMapping("/main")
-    public void GETMovieList(Search search, Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "recommend") String orderBy){
+    public void GETMovieList(@RequestParam(required = false) String movietype, Search search, Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "recommend") String orderBy){
         Criteria criteria = new Criteria(page, 10); /*페이지당 몇개의 포스터가 보여질 건지*/
 
         List<MovieDTO> list;
 
-        if (orderBy.equals("recommend")) {
-            list = movieService.getList(criteria, search);
-        } else if (orderBy.equals("alphabetical")) {
-            list = movieService.getList2(criteria, search);
-        } else if (orderBy.equals("newworks")){
-            list = movieService.getList3(criteria, search);
+        if (movietype != null && !movietype.isEmpty()) {
+            // movietype에 따라 영화 조회
+            list = movieService.getListByGenre(criteria, search, movietype);
         } else {
-            // 기본적으로 평점순으로 정렬하여 영화목록 조회
-            list = movieService.getList(criteria, search);
+            // 기본적으로 선택된 orderBy에 따라 영화 조회
+            if (orderBy.equals("recommend")) {
+                list = movieService.getList(criteria, search);
+            } else if (orderBy.equals("alphabetical")) {
+                list = movieService.getList2(criteria, search);
+            } else if (orderBy.equals("newworks")){
+                list = movieService.getList3(criteria, search);
+            } else {
+                // 기본적으로 평점순으로 정렬하여 영화목록 조회
+                list = movieService.getList(criteria, search);
+            }
         }
-
         model.addAttribute("list", list);
 
 

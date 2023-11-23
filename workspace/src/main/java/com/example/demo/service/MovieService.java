@@ -36,6 +36,11 @@ public class MovieService {
         return mapper.searchCountAll(search);
     }
 
+    //영화장르별리스트조회
+    public List<MovieDTO> getListByGenre(Criteria criteria, Search search, String movietype){
+        return mapper.getListByGenre(criteria, search, movietype);
+    }
+
     //영화목록조회(검색추가)(평점순)
     public List<MovieDTO> getList(Criteria criteria, Search search){
         return mapper.getList(criteria, search);
