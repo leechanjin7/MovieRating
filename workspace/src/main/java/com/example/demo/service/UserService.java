@@ -23,8 +23,17 @@ public class UserService {
 
     }
 
+    // 회원 조회
+    public UserDTO getUser(String userId) {return usermapper.selectOne(userId);}
+
     public UserDTO userSearch(String userId) {
         log.info("UserService's user search at userid: " + userId);
         return usermapper.selectOne(userId);
     }
+
+    // 회원정보수정
+    public void modify(UserDTO userDTO) {usermapper.update(userDTO);}
+
+    // 회원 삭제
+    public void delete(String userId) {usermapper.delete(userId);}
 }

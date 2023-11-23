@@ -1,18 +1,29 @@
 package com.example.demo.cotroller;
 
+import com.example.demo.config.auth.PrincipalDetails;
+import com.example.demo.domain.dto.MovieDTO;
+import com.example.demo.domain.dto.Search;
 import com.example.demo.domain.dto.UserDTO;
+import com.example.demo.domain.paging.Criteria;
+import com.example.demo.domain.paging.PageMakerDTO;
 import com.example.demo.service.RegisterMail;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -70,8 +81,40 @@ public class UserController {
         log.info("로그인 페이지 진입");
     }
 
-    @GetMapping("delete")
-    public void remove(String userid){
 
+    @GetMapping(value={"/mypage","/mypagemodi"})
+    public UserDTO mypage(Authentication authentication, Principal principal, Model model){
+        log.info("mypage진입");
+        System.out.println(principal);
+        String username = principal.getName();
+        UserDTO userDTO = userService.getUser(username);
+        model.addAttribute("userDTO", userDTO);
+        return userService.getUser(username);
+    }
+
+//    회원 정보 수정
+    @PostMapping("/mypagemodi")
+    public RedirectView modify(Authentication authentication, RedirectAttributes redirectAttributes, UserDTO userDTO){
+        PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();
+        userDTO.setUserRole(principalDetails.getUser().getUserRole());
+        userService.modify(userDTO);
+        principalDetails.setUser(userDTO);
+        redirectAttributes.addAttribute("userId", userDTO.getUserId());
+        return new RedirectView("mypagemodi");
+    }
+//    회원 탈퇴
+    @GetMapping("/mypage/remove")
+    public RedirectView remove(Principal principal, Model model){
+        String userId = principal.getName();
+        userService.delete(userId);
+        try {
+            userService.delete(userId);
+            model.addAttribute("successMessage", "탈퇴가 성공적으로 되었습니다.");
+        } catch (Exception e) {
+            // 탈퇴 실패 시에 대한 처리
+            model.addAttribute("errorMessage", "탈퇴 중 오류가 발생했습니다.");
+            return new RedirectView("mypagemodi");
+        }
+        return new RedirectView("/main");
     }
 }

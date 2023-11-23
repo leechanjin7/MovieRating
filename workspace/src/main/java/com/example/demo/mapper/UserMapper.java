@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
 	//회원조회(단건)
-	public UserDTO select(int userId);
+	public UserDTO select(String userId);
 
 	@Select("select * from tbl_user where userid=#{userid}")
 	public UserDTO selectOne(@Param("userid") String userId);
@@ -22,7 +22,7 @@ public interface UserMapper {
 	public void update(UserDTO userDTO);
 	
 	//회원탈퇴
-	public void delete(int userId);
+	public void delete(String userId);
 	
 	
 	

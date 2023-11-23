@@ -10,4 +10,19 @@
         VALUES (#{userId}, #{userName}, #{userPw}, #{userEmail}, #{userBirthday}, 0)
     </insert>
 
+    <!--  정보수정  -->
+    <update id="update">
+        UPDATE TBL_USER
+        SET USEREMAIL = #{userEmail}
+        WHERE USERID = #{userId}
+    </update>
+
+    <select id="findByUid" resultType="userDTO">
+        SELECT * FROM tbl_user WHERE USER_ID=#{userId}
+    </select>
+
+    <!--  회원 탈퇴  -->
+    <delete id="delete">
+        DELETE FROM tbl_user WHERE USERID=#{userId}
+    </delete>
 </mapper>

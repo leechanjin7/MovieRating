@@ -284,3 +284,8 @@ footer {
   font-size: 10px; 
   height: 10px;
 }
+/* 로그인 입력창 수정 2023.11.17*/
+form > input{
+    padding-left : 3px;
+}
+/*------------end-----------*/
