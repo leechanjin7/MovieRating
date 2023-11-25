@@ -44,3 +44,26 @@
             });
         });
     });
+    /* 이메일 인증 받기 */
+    // 인증 버튼 클릭 시 인증번호 입력란 표시
+    document.getElementById('emailVerification').addEventListener('click', function() {
+        var userEmail = document.getElementById('userEmail').value;
+        if (userEmail.trim() !== '') {
+            $.ajax({
+                url: '/member/mailConfirm',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ email: userEmail }),
+                success: function(data) {
+                    alert("이메일이 발송되었습니다. 확인후 인증번호를 입력해주세요");
+                    document.getElementById('verificationCode').style.display = 'block';
+                    console.log('인증 코드: ', data);
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        } else {
+            alert('이메일을 입력하세요.');
+        }
+    });
