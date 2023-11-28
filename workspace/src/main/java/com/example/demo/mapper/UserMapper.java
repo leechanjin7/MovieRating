@@ -15,6 +15,9 @@ public interface UserMapper {
 	@Select("select * from tbl_user where userid=#{userid}")
 	public UserDTO selectOne(@Param("userid") String userId);
 
+	//아이디중복조회
+	public int idCheckByUserId(String userId);
+
 	//회원가입
 	public void userJoin(UserDTO userDTO);
 

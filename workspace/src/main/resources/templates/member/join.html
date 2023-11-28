@@ -86,33 +86,40 @@
         <div class="join_form" style="background-color:rgb(233, 231, 231); height: 410px;">
             <div class="content">
                 <span class="content1">아이디</span>
-                <input type="text" class="box_st1" name="userId">
+                <input type="text" class="box_st1" name="userId"><br>
+                <span id="userIdError" class="error"></span>
             </div>
             <div class="content">
                 <span class="content1">이름</span>
-                <input type="text" class="box_st1" name="userName">
+                <input type="text" class="box_st1" name="userName"><br>
+                <span id="userNameError" class="error"></span>
             </div>
             <div class="content">
                 <span class="content1">비밀번호</span>
-                <input type="password" class="box_st1" name="userPw">
+                <input type="password" class="box_st1" name="userPw"><br>
+                <span id="userPwError" class="error"></span>
             </div>
             <div class="content">
                 <span class="content1">비밀번호 확인</span>
-                <input type="password" class="box_st1">
+                <input type="password" class="box_st1" name="userPwCheck"><br>
+                <span id="userPwError1" class="error"></span>
             </div>
             <div class="content">
                 <span class="content1">이메일</span>
                 <input type="email" class="box_st1" name="userEmail" id="userEmail">
-                <button type="button" id="emailVerification">인증</button>
+                <button type="button" id="emailVerification" style="cursor:pointer;">인증</button><br>
+                <span id="userEmailError" class="error"></span>
             </div>
             <div class="content" id="verificationCode" style="display: none;">
                 <span class="content1">인증번호</span>
                 <input type="text" class="box_st1" id="verificationInput">
-                <button type="button" id="submitVerification">확인</button>
+                <button type="button" id="submitVerification" style="cursor:pointer;">확인</button><br>
+                <span id="userEmailError2" class="error"></span>
             </div>
             <div class="content">
                 <span class="content1">생년월일</span>
-                <input type="text" class="box_st1" name="userBirthday">
+                <input type="text" class="box_st1" name="userBirthday"><br>
+                <span id="userBirthdayError" class="error"></span>
             </div>
         </div>
 
@@ -191,7 +198,6 @@
 <script src="/js/index.js"></script>
 <script src="/js/login.js"></script>
 <script src="/js/join.js"></script>
-
 
 </body>
 

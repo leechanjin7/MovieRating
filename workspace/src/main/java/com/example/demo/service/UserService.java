@@ -26,6 +26,12 @@ public class UserService {
     // 회원 조회
     public UserDTO getUser(String userId) {return usermapper.selectOne(userId);}
 
+    //아이디중복조회
+    public boolean isUserIdExist(String userId) {
+        int count = usermapper.idCheckByUserId(userId);
+        return count > 0;
+    }
+
     public UserDTO userSearch(String userId) {
         log.info("UserService's user search at userid: " + userId);
         return usermapper.selectOne(userId);

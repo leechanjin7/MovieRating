@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,14 +62,46 @@ public class UserController {
         return result;
     }
 
+    //아이디중복체크
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public Map<String, String> checkUserId(@RequestBody Map<String, String> userIdMap) {
+        Map<String, String> result = new HashMap<>();
+        String userId = userIdMap.get("userId");
+        if (userService.isUserIdExist(userId)) {
+            result.put("message", "이미 사용중인 아이디입니다.");
+            result.put("status", "fail");
+        } else {
+            result.put("message", "사용 가능한 아이디입니다.");
+            result.put("status", "success");
+        }
+        return result;
+    }
+
+
+
 
     @PostMapping("/mailConfirm")
     @ResponseBody
-    String mailConfirm(@RequestBody Map<String, String> body) throws Exception {
+    String mailConfirm(@RequestBody Map<String, String> body, HttpSession session) throws Exception {
         String email = body.get("email");
         String code = registerMail.sendSimpleMessage(email);
+        session.setAttribute("code", code); //세션에 코드값 저장
         System.out.println("인증코드 : " + code);
         return code;
+    }
+
+    @PostMapping("/checkCode")
+    @ResponseBody
+    boolean checkCode(@RequestBody Map<String, String> body, HttpSession session) {
+        String inputCode = body.get("code");
+        String sessionCode = (String) session.getAttribute("code"); // session에서 code 가져오기
+
+        if (inputCode.equals(sessionCode)) { // 사용자가 입력한 코드와 session의 코드가 같은지 확인
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @GetMapping("login")

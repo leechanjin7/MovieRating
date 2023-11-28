@@ -18,7 +18,11 @@
     </update>
 
     <select id="findByUid" resultType="com.example.demo.domain.dto.UserDTO">
-        SELECT * FROM tbl_user WHERE USER_ID=#{userId}
+        SELECT * FROM tbl_user WHERE USERID=#{userId}
+    </select>
+
+    <select id="idCheckByUserId" resultType="int">
+        SELECT COUNT(*) FROM tbl_user WHERE userid = #{userId}
     </select>
 
     <!--  회원 탈퇴  -->
