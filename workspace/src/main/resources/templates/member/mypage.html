@@ -74,7 +74,7 @@
                 <a th:if="${#authorization.expression('isAnonymous()')}" href="/member/join" class="join_button">회원가입</a>
                 <div th:if="${#authorization.expression('!isAnonymous()')}" class="rightbox">
                     <div>
-                        <span class="" th:text="${#authentication.name}"></span>님
+                        <a href="/member/mypage"><span class="" th:text="${#authentication.name}" style="color:#f2b90a;"></span>님</a>
                     </div>
                     <a href="/logout" class="join_button">로그아웃</a>
                 </div>

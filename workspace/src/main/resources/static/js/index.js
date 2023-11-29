@@ -83,3 +83,7 @@ const pageButtons = document.querySelectorAll(".pagebtn");
                 this.classList.add("active");
             });
         });
+
+function confirmLogout() {
+    return confirm('정말로 로그아웃 하시겠습니까?');
+}

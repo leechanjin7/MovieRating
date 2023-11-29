@@ -82,9 +82,9 @@
                 <a th:if="${#authorization.expression('isAnonymous()')}" href="/member/join" class="join_button">회원가입</a>
                 <div th:if="${#authorization.expression('!isAnonymous()')}" class="rightbox">
 
-                    <a href="/member/mypage"><span class="" th:text="${#authentication.name}"></span>님</a>
+                    <a href="/member/mypage"><span class="" th:text="${#authentication.name}" style="color:#f2b90a;"></span>님</a>
 
-                    <a href="/logout" class="join_button">로그아웃</a>
+                    <a href="/logout" class="join_button" onclick="return confirmLogout();">로그아웃</a>
                 </div>
                 <!--            <a th:if="${#authorization.expression('!isAnonymous()')}" href="/logout" class="link">로그아웃</a>-->
             </div>
@@ -185,6 +185,5 @@
 <script src="/js/index.js"></script>
 <script src="/js/login.js"></script>
 <script src="/js/main.js"></script>
-
 </body>
 </html>
