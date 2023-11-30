@@ -36,10 +36,27 @@ public class MovieService {
         return mapper.searchCountAll(search);
     }
 
-    //영화목록조회(검색추가)
+    //영화장르별리스트조회
+    public List<MovieDTO> getListByGenre(Criteria criteria, Search search, String movietype){
+        return mapper.getListByGenre(criteria, search, movietype);
+    }
+
+    //영화목록조회(검색추가)(평점순)
     public List<MovieDTO> getList(Criteria criteria, Search search){
         return mapper.getList(criteria, search);
     }
+
+    //영화목록조회(검색추가)(가나다순)
+    public List<MovieDTO> getList2(Criteria criteria, Search search){
+        return mapper.getList2(criteria, search);
+    }
+
+    //영화목록조회(검색추가)(신작순)
+    public List<MovieDTO> getList3(Criteria criteria, Search search){
+        return mapper.getList3(criteria, search);
+    }
+
+
 
     //목록페이징(검색추가)
     public List<MovieDTO> getListPaging(Criteria criteria, Search search){
@@ -55,5 +72,17 @@ public class MovieService {
         log.info("ID {}로 영화 검색: {}", movieId, movie);
         return movie;
     }
+
+    public int getTotalByGenre(Search search, String movietype) {
+        if ("전체".equals(movietype)) {
+            return getTotal(search);
+        } else {
+            // 그 외의 경우에는 해당 장르의 영화 총 갯수를 조회
+            return mapper.getTotalByGenre(search, movietype);
+        }
+    }
+
+
+
 
 }

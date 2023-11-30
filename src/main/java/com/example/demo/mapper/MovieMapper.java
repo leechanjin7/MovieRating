@@ -33,13 +33,27 @@ public interface MovieMapper {
 	//페이징처리
 	public List<MovieDTO> moviePaging(Criteria criteria);
 
-	//영화목록조회(검색추가)
+	//영화장르별리스트조회
+	public List<MovieDTO> getListByGenre(@Param("cri")Criteria criteria, @Param("search") Search search,@Param("movietype") String movietype);
+
+	//영화목록조회(검색추가)(영화평점순)
 	public List<MovieDTO> getList(@Param("cri")Criteria criteria, @Param("search") Search search);
+
+	//영화목록조회(검색추가)(가나다순)
+	public List<MovieDTO> getList2(@Param("cri")Criteria criteria, @Param("search") Search search);
+
+	//영화목록조회(검색추가)(신작순)
+	public List<MovieDTO> getList3(@Param("cri")Criteria criteria, @Param("search") Search search);
 
 	//목록페이징(검색추가)
 	public List<MovieDTO> getListPaging(@Param("cri")Criteria criteria, @Param("search") Search search);
 
+
+	int getTotalByGenre(@Param("search") Search search, @Param("movietype") String movietype);
 	//영화 검색 갯수
 	public int searchCountAll(@Param("search")Search search);
+
+
+
 
 }

@@ -101,7 +101,13 @@ nav > ul > li:nth-child(2) {
   font-weight: bold;
 }
 
-
+.search_icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+  width: 30px;
+}
 
 nav > ul {
   display: flex;

@@ -206,37 +206,6 @@ textarea {
   color: white;
   background: #ffc400;
 }
-.bunch > input::placeholder{
-font-weight:bold;
-color:white;
-}
-#sFld{
-outline:none;
-border:none;
-color: #f2b90a;
-border:1px solid #f2b90a;
-width:80px;
-height:40px;
-margin-right:10px;
-font-weight:bold;
-}
-#sFld > option{
-width:50px;
-height:40px;
-}
-.bunch{
-height:30px;
-position:relative;
-}
-.bunch > input{
-color:white;
-outline:none;
-padding-left:5px;
-background:#f2b90a;
-border:none;
-width:250px;
-height:40px;
-}
 .poster_top >div:nth-child(2){
  font-family: 'yg-jalnan';
  font-size:26px;
@@ -250,15 +219,6 @@ height:40px;
 
 }
 
-.search_icon{
-display:block;
-width:18px;
-height:18px;
-position:absolute;
-right:10px;
-top:50%;
-transform:translateY(-50%);;
-}
 .directer {
   height: 200px;
   display: flex;

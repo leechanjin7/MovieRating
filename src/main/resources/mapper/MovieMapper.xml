@@ -59,11 +59,34 @@
         </if>
     </sql>
 
+    <!-- 영화장르별리스트조회 -->
+    <select id="getListByGenre" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT MOVIEID, MOVIENAME, MOVIETIME, MOVIEINFO, MOVIETYPE, MOVIEDIC, MOVIEACT, MOVIERELEASE, MOVIERATING, MOVIEIMG
+        FROM TBL_MOVIE
+        WHERE MOVIETYPE = #{movietype};
+    </select>
+
     <!-- 평점순영화리스트조회 -->
     <select id="getList" resultType="com.example.demo.domain.dto.MovieDTO">
         SELECT * FROM TBL_MOVIE
         <include refid="search"/>
         ORDER BY MOVIERATING DESC
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <!-- 가나다순영화리스트조회 -->
+    <select id="getList2" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT * FROM TBL_MOVIE
+        <include refid="search"/>
+        ORDER BY MOVIENAME ASC
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <!-- 신작순영화리스트조회 -->
+    <select id="getList3" resultType="com.example.demo.domain.dto.MovieDTO">
+        SELECT * FROM TBL_MOVIE
+        <include refid="search"/>
+        ORDER BY MOVIERELEASE DESC
         LIMIT #{cri.skip}, #{cri.amount}
     </select>
 
@@ -83,6 +106,12 @@
         FROM TBL_MOVIE
         ORDER BY MOVIERATING DESC
         LIMIT #{skip}, #{amount}
+    </select>
+
+    <!-- 장르별 영화 총 갯수 조회 -->
+    <select id="getTotalByGenre" resultType="int" parameterType="string">
+        SELECT COUNT(*) FROM TBL_MOVIE
+        WHERE MOVIETYPE = #{movietype}
     </select>
 
 

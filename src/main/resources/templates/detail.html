@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/detail.css" />
-  <title>백승하놈</title>
+  <title>Document</title>
 </head>
 
 <body>
@@ -37,29 +37,21 @@
     </nav>
 
     <div class="right_icon">
-      <form name="searchForm" th:action="@{/main}" method="get" id="searchForm">
-                <span class="bunch">
-                    <select name="type" id="sFld">
-                      <option value="tw" th:selected="${search.type == 'tw'}">전체</option>
-                      <option value="t" th:selected="${search.type == 't'}">제목</option>
-                      <option value="w" th:selected="${search.type == 'w'}">장르</option>
-                      <input type="text" name="keyword" id="sStr" th:value="${search.keyword}" placeholder="보고싶은 영화를 검색해보세요">
-                        <button class="search_icon"><img src="/image/search_icon_white.png"></button>
-                    </select>
-                </span>
-      </form>
-
-      <div class="rightbox">
-        <a th:if="${#authorization.expression('isAnonymous()')}" href="#" class="login_button">로그인</a>
-        <a th:if="${#authorization.expression('isAnonymous()')}" href="/member/join" class="join_button">회원가입</a>
-        <div th:if="${#authorization.expression('!isAnonymous()')}" class="rightbox">
-          <div>
-            <span class="" th:text="${#authentication.name}"></span>님
-          </div>
-          <a href="/logout" class="join_button">로그아웃</a>
-        </div>
-        <!--            <a th:if="${#authorization.expression('!isAnonymous()')}" href="/logout" class="link">로그아웃</a>-->
+      <div>
+        <input
+                class="search"
+                type="text"
+                placeholder="보고싶은 영화를 검색해보세요."
+        />
+        <img
+                class="search_icon"
+                src="/image/search_icon.png"
+                alt="검색찾기 아이콘"
+        />
       </div>
+
+      <a href="#" class="login_button">로그인</a>
+      <a href="#" class="join_button">회원가입</a>
     </div>
   </div>
 </header>
@@ -89,10 +81,10 @@
 
     <div>
       <div class="poster_main">
-        <div class="Poster-image" name="Poster-image" th:each="lists : ${lists}">
+        <div class="Poster-image" name="Poster-image" th:each="list : ${list}">
           <img
 
-                  th:src="${lists.movieImg}"
+                  th:src="${list.movieImg}"
                   alt=""
                   style="height: 570px; max-width: 100%"
           />
