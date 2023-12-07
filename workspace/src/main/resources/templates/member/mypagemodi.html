@@ -85,7 +85,7 @@
 <section class="main">
     <div class="boxalign">
         <div class="mainbox">
-            <form class="formbox" th:action="@{/member/mypagemodi}" method="post" th:object="${userDTO}">
+            <form class="formbox" th:action="@{/member/mypagemodi}" method="post" th:object="${userDTO}" onsubmit="return confirm('수정하시겠습니까?');">
                 <div class="signup_title"> 회원 정보 수정을 위해 입력해주세요.</div>
                 <div class="signup_info_form" ><span style="color:red;">*</span> 아이디<br>
                     <input class="signup_id"
@@ -116,13 +116,13 @@
                         <input type="checkbox" class="agree">&nbsp 이용약관 개인정보 수집 및 정보이용에 동의합니다.
                     </div>
                     <br>
-                    <button type="submit" class="signup_submit_1">수정하기</button>
+                    <button type="submit" class="signup_submit_1" style="cursor:pointer;">수정하기</button>
                 </div>
             </form>
             <div>
                 <form class="removeform" th:action="@{/member/mypage/remove}" method="get" th:object="${userDTO}" onsubmit="return confirmWithdraw()">
                     <input type="hidden" name="userId" th:value="*{userId}">
-                    <button type="submit" class="signup_submit_2" onclick="">회원탈퇴</button>
+                    <button type="submit" class="signup_submit_2" onclick="" style="cursor:pointer;">회원탈퇴</button>
                 </form>
                 <div th:if="${successMessage}" class="success-message">
                     <p th:text="${successMessage}"></p>

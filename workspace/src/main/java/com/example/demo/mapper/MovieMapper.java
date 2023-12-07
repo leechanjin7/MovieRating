@@ -48,6 +48,8 @@ public interface MovieMapper {
 	//목록페이징(검색추가)
 	public List<MovieDTO> getListPaging(@Param("cri")Criteria criteria, @Param("search") Search search);
 
+
+	public int getTotalByGenre(@Param("search") Search search, @Param("movietype") String movietype);
 	//영화 검색 갯수
 	public int searchCountAll(@Param("search")Search search);
 

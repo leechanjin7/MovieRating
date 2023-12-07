@@ -27,13 +27,25 @@ public class MovieController {
     //    영화목록(페이징 적용)
     @GetMapping("/main")
     public void GETMovieList(@RequestParam(required = false) String movietype, Search search, Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "recommend") String orderBy){
-        Criteria criteria = new Criteria(page, 10); /*페이지당 몇개의 포스터가 보여질 건지*/
+        Criteria criteria = new Criteria(page, 10);
 
         List<MovieDTO> list;
+        int total;
+        PageMakerDTO pageMaker;
 
         if (movietype != null && !movietype.isEmpty()) {
-            // movietype에 따라 영화 조회
-            list = movieService.getListByGenre(criteria, search, movietype);
+            if (movietype.equals("전체")) {
+                // 전체 영화 조회
+                list = movieService.moviePaging(criteria);
+            } else {
+                // movietype에 따라 영화 조회
+                list = movieService.getListByGenre(criteria, search, movietype);
+            }
+            // 해당 장르의 영화 갯수를 가져와 모델에 추가
+            total = movieService.getTotalByGenre(search, movietype);
+            pageMaker = new PageMakerDTO(criteria, total);
+
+            //log.info(String.valueOf("total"+total));
         } else {
             // 기본적으로 선택된 orderBy에 따라 영화 조회
             if (orderBy.equals("recommend")) {
@@ -46,15 +58,17 @@ public class MovieController {
                 // 기본적으로 평점순으로 정렬하여 영화목록 조회
                 list = movieService.getList(criteria, search);
             }
+            // 전체 영화 갯수를 가져와 모델에 추가
+            total = movieService.getTotal(search);
+            pageMaker = new PageMakerDTO(criteria, total);
         }
         model.addAttribute("list", list);
 
 
-        int total = movieService.getTotal(search);
-        PageMakerDTO pageMaker = new PageMakerDTO(criteria, total);
-
-        int totalMovieCount = movieService.getTotal(search);
-        model.addAttribute("totalMovieCount", totalMovieCount);
+        model.addAttribute("list", list);
+//        log.info(String.valueOf("list"+list));
+        model.addAttribute("total", total);
+        model.addAttribute("totalMovieCount", total);
         model.addAttribute("pageMaker", pageMaker);
         model.addAttribute("criteria", criteria);
         model.addAttribute("orderBy", orderBy);
@@ -72,7 +86,7 @@ public class MovieController {
         model.addAttribute("movie", movie);
         model.addAttribute("list", List.of(movie));
 //        log.info(List.of(movie).toString());
-        log.info("Movie Image URL: {}", movie.getMovieImg());
+//        log.info("Movie Image URL: {}", movie.getMovieImg());
 
         return "detail";
 

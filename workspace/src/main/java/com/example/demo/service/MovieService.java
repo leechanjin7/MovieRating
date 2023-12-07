@@ -18,49 +18,49 @@ import java.util.List;
 @Slf4j
 public class MovieService {
     @Autowired
-    private final MovieMapper mapper;
+    private final MovieMapper moviemapper;
 
     //전체영화 조회
     public List<MovieDTO> selectAll(Criteria criteria){
 
-        return mapper.selectAll(criteria);
+        return moviemapper.selectAll(criteria);
     }
 
     //영화 목록(페이징처리)
     public List<MovieDTO> moviePaging(Criteria criteria){
-        return mapper.moviePaging(criteria);
+        return moviemapper.moviePaging(criteria);
     }
 
     //영화 총 갯수
     public int getTotal(Search search){
-        return mapper.searchCountAll(search);
+        return moviemapper.searchCountAll(search);
     }
 
     //영화장르별리스트조회
     public List<MovieDTO> getListByGenre(Criteria criteria, Search search, String movietype){
-        return mapper.getListByGenre(criteria, search, movietype);
+        return moviemapper.getListByGenre(criteria, search, movietype);
     }
 
     //영화목록조회(검색추가)(평점순)
     public List<MovieDTO> getList(Criteria criteria, Search search){
-        return mapper.getList(criteria, search);
+        return moviemapper.getList(criteria, search);
     }
 
     //영화목록조회(검색추가)(가나다순)
     public List<MovieDTO> getList2(Criteria criteria, Search search){
-        return mapper.getList2(criteria, search);
+        return moviemapper.getList2(criteria, search);
     }
 
     //영화목록조회(검색추가)(신작순)
     public List<MovieDTO> getList3(Criteria criteria, Search search){
-        return mapper.getList3(criteria, search);
+        return moviemapper.getList3(criteria, search);
     }
 
 
 
     //목록페이징(검색추가)
     public List<MovieDTO> getListPaging(Criteria criteria, Search search){
-        return mapper.getListPaging(criteria, search);
+        return moviemapper.getListPaging(criteria, search);
     }
 
 //    public MovieDTO getMovieById(int movieId){
@@ -68,9 +68,18 @@ public class MovieService {
 //    }
 
     public MovieDTO getMovieById(int movieId){
-        MovieDTO movie = mapper.select(movieId);
-        log.info("ID {}로 영화 검색: {}", movieId, movie);
+        MovieDTO movie = moviemapper.select(movieId);
+//        log.info("ID {}로 영화 검색: {}", movieId, movie);
         return movie;
+    }
+
+    public int getTotalByGenre(Search search, String movietype) {
+        if ("전체".equals(movietype)) {
+            return getTotal(search);
+        } else {
+            // 그 외의 경우에는 해당 장르의 영화 총 갯수를 조회
+            return moviemapper.getTotalByGenre(search, movietype);
+        }
     }
 
 }

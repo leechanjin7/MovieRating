@@ -108,6 +108,12 @@
         LIMIT #{skip}, #{amount}
     </select>
 
+    <!-- 장르별 영화 총 갯수 조회 -->
+    <select id="getTotalByGenre" resultType="int" parameterType="string">
+        SELECT COUNT(*) FROM TBL_MOVIE
+        WHERE MOVIETYPE = #{movietype}
+    </select>
+
 
 
 </mapper>
